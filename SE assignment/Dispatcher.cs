@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SE_assignment
 {
-    class Manager : Employee
+    class Dispatcher : Employee
 {
 }
 }
