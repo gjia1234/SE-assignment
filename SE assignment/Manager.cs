@@ -6,5 +6,8 @@ namespace SE_assignment
 {
     class Manager : Employee
 {
+        private DateTime startTime;
+       
+
 }
 }
