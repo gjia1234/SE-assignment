@@ -18,9 +18,11 @@ namespace SE_assignment
         private DateTime ETA; // ESTIMATED time the customer will receive the food
         private DateTime timeDelivered; // ACTUAL time the customer receive the food
         private Customer cust;
+        private Dispatcher disp;
+        private List<OrderLine> orderList;
         
 
-        public Order(int OrderNo, string Status, DateTime CreateDateTime, float Subtotal, float DeliveryCharge, float goodServiceTax, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime estimatedTimeArrival, DateTime TimeDelivered, Customer customer) 
+        public Order(int OrderNo, string Status, DateTime CreateDateTime, float Subtotal, float DeliveryCharge, float goodServiceTax, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime estimatedTimeArrival, DateTime TimeDelivered, Customer customer, Dispatcher dispatcher) 
         {
             orderNo = OrderNo;
             status = Status;
@@ -34,6 +36,7 @@ namespace SE_assignment
             ETA = estimatedTimeArrival;
             timeDelivered = TimeDelivered;
             cust = customer;
+            disp = dispatcher;
         }
         
 
