@@ -6,11 +6,15 @@ namespace SE_assignment
 {
     class OrderLine
     {
-        private int qty;
 
-        public OrderLine(int Qty)
+        public int qty { get; set; }
+        public Menu menu { get; set; }
+
+
+        public OrderLine(int Qty,Menu Menu)
         {
             qty = Qty;
+            menu = Menu;
         }
     }
 }

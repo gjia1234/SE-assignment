@@ -6,23 +6,23 @@ namespace SE_assignment
 {
     class Order
     {
-        private int orderNo;
-        private string status; //new, preparing, ready, dispatched, delivered, cancelled
-        private DateTime createDateTime; // Date & Time order is submitted
-        private float subtotal;
-        private float deliveryCharge;
-        private float GST;
-        private float totalPaymentAmt;
-        private string paymentMethod;
-        private DateTime timeReady; // Time the food is fully prepared
-        private DateTime ETA; // ESTIMATED time the customer will receive the food
-        private DateTime timeDelivered; // ACTUAL time the customer receive the food
-        private Customer cust;
-        private Dispatcher disp;
-        private List<OrderLine> orderList;
-        
 
-        public Order(int OrderNo, string Status, DateTime CreateDateTime, float Subtotal, float DeliveryCharge, float goodServiceTax, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime estimatedTimeArrival, DateTime TimeDelivered, Customer customer, Dispatcher dispatcher) 
+        public int orderNo { get; set; }
+        public string status { get; set; } //new, preparing, ready, dispatched, delivered, cancelled
+        public DateTime createDateTime { get; set; }
+        public float subtotal { get; set; }
+        public float deliveryCharge { get; set; }
+        public float GST { get; set; }
+        public float totalPaymentAmt { get; set; }
+        public string paymentMethod { get; set; }
+        public DateTime timeReady { get; set; }// Time the food is fully prepared
+        public DateTime ETA { get; set; }// ESTIMATED time the customer will receive the food
+        public DateTime timeDelivered { get; set; }// ACTUAL time the customer receive the food
+        public Customer cust { get; set; }
+        public Dispatcher disp { get; set; }
+        public List<OrderLine> orderlineList { get; set; }
+
+        public Order(int OrderNo, string Status, DateTime CreateDateTime, float Subtotal, float DeliveryCharge, float goodServiceTax, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime estimatedTimeArrival, DateTime TimeDelivered, Customer customer, Dispatcher dispatcher, List<OrderLine> OrderLineList) 
         {
             orderNo = OrderNo;
             status = Status;
@@ -37,6 +37,7 @@ namespace SE_assignment
             timeDelivered = TimeDelivered;
             cust = customer;
             disp = dispatcher;
+            orderlineList = OrderLineList;
         }
         
 
