@@ -6,8 +6,9 @@ namespace SE_assignment
     class Program
     {
         static void Main(string[] args)
-        {
-            //Test Data 
+        {   
+
+            //Test Data for Order
             //Test Data 1
             Customer cust1 = new Customer(1, "Avin", "Ngee Ann Poly", "avin@np.com", 91234567);
             Dispatcher disp1 = new Dispatcher("mohd", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
