@@ -6,6 +6,7 @@ namespace SE_assignment
     {
         static void Main(string[] args)
         {
+            //Message
             Console.WriteLine("What is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
             string role = Console.ReadLine();
             if (role == "1")
