@@ -20,13 +20,5 @@ namespace SE_assignment
             email = Email;
             hpno = HPno;
         }
-        public void print()
-        {
-            Console.WriteLine("account No.: " + accountNo);
-            Console.WriteLine("Name: " + name);
-            Console.WriteLine("Address: " + address);
-            Console.WriteLine("Email: " + email);
-            Console.WriteLine("HP No.: " + hpno);
-        }
     }
 }
