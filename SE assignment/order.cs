@@ -6,23 +6,38 @@ namespace SE_assignment
 {
     class Order
     {
-        private int OrderNo;
-        private string Status; //new, preparing, ready, dispatched, delivered, cancelled
-        private DateTime DateTime; // Date & Time order is submitted
-        private float Subtotal;
-        private float DeliveryCharge;
-        private float GST;
-        private float TotalPaymentAmt;
-        private string PaymentMethod;
-        private DateTime TimeReady; // Time the food is fully prepared
-        private DateTime ETA; // ESTIMATED time the customer will receive the food
-        private DateTime TimeDelivered; // ACTUAL time the customer receive the food
-        private Customer customer;
-        
 
-        public Order(int OrderNo, string Status, DateTime DateTime, float Subtotal, float DeliveryCharge, float GST, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime ETA, DateTime TimeDelivered, Customer customer) 
+        public int orderNo { get; set; }
+        public string status { get; set; } //new, preparing, ready, dispatched, delivered, cancelled
+        public DateTime createDateTime { get; set; }
+        public float subtotal { get; set; }
+        public float deliveryCharge { get; set; }
+        public float GST { get; set; }
+        public float totalPaymentAmt { get; set; }
+        public string paymentMethod { get; set; }
+        public DateTime timeReady { get; set; }// Time the food is fully prepared
+        public DateTime ETA { get; set; }// ESTIMATED time the customer will receive the food
+        public DateTime timeDelivered { get; set; }// ACTUAL time the customer receive the food
+        public Customer cust { get; set; }
+        public Dispatcher disp { get; set; }
+        public List<OrderLine> orderlineList { get; set; }
+
+        public Order(int OrderNo, string Status, DateTime CreateDateTime, float Subtotal, float DeliveryCharge, float goodServiceTax, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime estimatedTimeArrival, DateTime TimeDelivered, Customer customer, Dispatcher dispatcher, List<OrderLine> OrderLineList) 
         {
-            
+            orderNo = OrderNo;
+            status = Status;
+            createDateTime = CreateDateTime;
+            subtotal = Subtotal;
+            deliveryCharge = DeliveryCharge;
+            GST = goodServiceTax;
+            totalPaymentAmt = TotalPaymentAmt;
+            paymentMethod = PaymentMethod;
+            timeReady = TimeReady;
+            ETA = estimatedTimeArrival;
+            timeDelivered = TimeDelivered;
+            cust = customer;
+            disp = dispatcher;
+            orderlineList = OrderLineList;
         }
         
 

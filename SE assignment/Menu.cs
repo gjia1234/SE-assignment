@@ -6,14 +6,17 @@ namespace SE_assignment
 {
     class Menu
     {
-        private int id;
-        private string name;
-        private string description;
-        private int price;
-        private int unit;
-        private string status;
 
-        public Menu(int ID, string Name, string Description, int Price, int Unit, string Status)
+        public int id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public float price { get; set; }
+        public int unit  { get; set; }
+        public string status { get; set; }
+
+
+
+        public Menu(int ID, string Name, string Description, float Price, int Unit, string Status)
         {
             id = ID;
             name = Name;
