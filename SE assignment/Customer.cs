@@ -11,6 +11,7 @@ namespace SE_assignment
         private string address;
         private string email;
         private int hpno;
+        private Order order;
 
         public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
         {
