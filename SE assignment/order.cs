@@ -22,21 +22,13 @@ namespace SE_assignment
         public Dispatcher disp { get; set; }
         public List<OrderLine> orderlineList { get; set; }
 
-        public Order(int OrderNo, string Status, DateTime CreateDateTime, float Subtotal, float DeliveryCharge, float goodServiceTax, float TotalPaymentAmt, string PaymentMethod, DateTime TimeReady, DateTime estimatedTimeArrival, DateTime TimeDelivered, Customer customer, Dispatcher dispatcher, List<OrderLine> OrderLineList) 
+        public Order(int OrderNo, string Status, DateTime CreateDateTime, string PaymentMethod, Customer customer, List<OrderLine> OrderLineList) 
         {
             orderNo = OrderNo;
             status = Status;
             createDateTime = CreateDateTime;
-            subtotal = Subtotal;
-            deliveryCharge = DeliveryCharge;
-            GST = goodServiceTax;
-            totalPaymentAmt = TotalPaymentAmt;
             paymentMethod = PaymentMethod;
-            timeReady = TimeReady;
-            ETA = estimatedTimeArrival;
-            timeDelivered = TimeDelivered;
             cust = customer;
-            disp = dispatcher;
             orderlineList = OrderLineList;
         }
         

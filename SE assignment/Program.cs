@@ -22,7 +22,7 @@ namespace SE_assignment
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
 
-            Order a = new Order(1, "New", DateTime.Now, 36, 3, 1, 40, "Credit Card", DateTime.Now, DateTime.Now, DateTime.Now, cust1, disp1, orderLineList1);
+            Order a = new Order(1, "New", DateTime.Now, "Credit Card", cust1, orderLineList1);
 
             //Test Data 2
             Customer cust2 = new Customer(1, "Diego", "Ngee Ann Poly", "avin@np.com", 91234567);
@@ -45,11 +45,11 @@ namespace SE_assignment
 
 
             //Message
-            Console.WriteLine("What is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
+            Console.Write("What is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option: ");
             string role = Console.ReadLine();
             if (role == "1")
             {
-                customerProcess();
+                customerProcess(cust1);
             }
             else if (role == "2")
             {
@@ -65,13 +65,13 @@ namespace SE_assignment
             }
         }
 
-        static void customerProcess() {
-            Console.WriteLine("You have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
+        static void customerProcess(Customer c) {
+            Console.Write("You have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option: ");
             string option = Console.ReadLine();
             //Create new order function
             if (option == "A")
             {
-
+                c.CreateOrder();
             }
             //View Current and past orders
             else if (option == "B")
@@ -81,12 +81,12 @@ namespace SE_assignment
             else
             {
                 Console.WriteLine("Option does not exist! Try again!");
-                customerProcess();
             }
+            customerProcess(c);
         }
 
         static void managerProcess(List<Order> ol) {
-            Console.WriteLine("You have selected Manager!\nSelect your option:\n[A]Manage food items and menus\n[B]View Orders\nInput Option:");
+            Console.WriteLine("You have selected Manager!\nSelect your option:\n[A]Manage food items and menus\n[B]View Orders\nInput Option: ");
             string option = Console.ReadLine();
             //Manage food items and menus, including adding/updating/deleting of food items and menus
             if (option == "A")
@@ -116,7 +116,7 @@ namespace SE_assignment
 
         static void chefProcess()
         {
-            Console.WriteLine("You have selected Chef!\n[show list of orders?]\nInput order you wish to prepare:");
+            Console.WriteLine("You have selected Chef!\n[show list of orders?]\nInput order you wish to prepare: ");
             string orderNum = Console.ReadLine();
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
         }

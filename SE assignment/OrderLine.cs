@@ -10,7 +10,6 @@ namespace SE_assignment
         public int qty { get; set; }
         public Menu menu { get; set; }
 
-
         public OrderLine(int Qty,Menu Menu)
         {
             qty = Qty;
