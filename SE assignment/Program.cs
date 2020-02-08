@@ -37,11 +37,9 @@ namespace SE_assignment
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
 
-            Order b = new Order(2, "New", DateTime.Now, 36, 3, 1, 40, "Cash", DateTime.Now, DateTime.Now, DateTime.Now, cust2, disp2, orderLineList1);
-
-            List<Order> orderList = new List<Order>();
-            orderList.Add(a);
-            orderList.Add(b);
+            Order b = new Order(2, "New", DateTime.Now, "Cash", cust2, orderLineList1);
+            Globals.OrderList.Add(a);
+            Globals.OrderList.Add(b);
 
 
             //Message
@@ -53,7 +51,7 @@ namespace SE_assignment
             }
             else if (role == "2")
             {
-                managerProcess(orderList);
+                managerProcess();
             }
             else if (role == "3")
             {
@@ -85,7 +83,7 @@ namespace SE_assignment
             customerProcess(c);
         }
 
-        static void managerProcess(List<Order> ol) {
+        static void managerProcess() {
             Console.WriteLine("You have selected Manager!\nSelect your option:\n[A]Manage food items and menus\n[B]View Orders\nInput Option: ");
             string option = Console.ReadLine();
             //Manage food items and menus, including adding/updating/deleting of food items and menus
@@ -96,21 +94,13 @@ namespace SE_assignment
             //View orders using various filters such as new, cancelled, delivered, etc
             else if (option == "B")
             {
-                Console.WriteLine("All Orders:");
-                foreach (Order o in ol) {
-                    //",Created Time:"+o.createDateTime+
-                    Console.WriteLine("Order No:"+o.orderNo+", Status:"+o.status+", Total Payment Amount:"+o.totalPaymentAmt+", Payment Method:"+o.paymentMethod+", Time Ready:"+o.timeReady+", Time Delivered:"+o.timeDelivered+", Customer Name:"+o.cust.name+", Dispatcher Name:"+o.disp.name+"\n");
-                }
-                Console.WriteLine("Enter your filter");
-                //new, preparing, ready, dispatched, delivered, cancelled
-
-                string optioasn = Console.ReadLine();
+                Order.managerViewOrder();
 
             }
             else
             {
                 Console.WriteLine("Option does not exist! Try again!");
-                managerProcess(ol);
+                managerProcess();
             }
         }
 
