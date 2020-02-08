@@ -6,12 +6,14 @@ namespace SE_assignment
 {
     class Customer
     {
-        private int accountNo;
-        private string name;
-        private string address;
-        private string email;
-        private int hpno;
-        private Order order;
+
+        public int accountNo { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public string email { get; set; }
+        public int hpno { get; set; }
+
+
 
         public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
         {

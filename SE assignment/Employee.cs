@@ -6,13 +6,13 @@ namespace SE_assignment
 {
     class Employee
     {
-        private string name;
-        private int number;
-        private string nric;
-        private string gender;
-        private int contactNo;
-        private DateTime dateJoin;
-        private string status;
+        public string name { get; set; }
+        public int number { get; set; }
+        public string nric { get; set; }
+        public string gender { get; set; }
+        public int contactNo { get; set; }
+        public DateTime dateJoin { get; set; }
+        public string status { get; set; }
 
         public Employee(string Name, int Number, string NRIC, string Gender, int ContactNo, DateTime DateJoin, string Status)
         {
