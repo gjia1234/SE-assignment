@@ -37,7 +37,7 @@ namespace SE_assignment
             menuList.Add(f2);
 
 
-            Order a = new Order(1, "New", DateTime.Now, 36, 3, 1, 40, "Credit Card", DateTime.Now, DateTime.Now, DateTime.Now, cust1, disp1, orderLineList1);
+            Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
 
             //Test Data 2
             Customer cust2 = new Customer(1, "Diego", "Ngee Ann Poly", "avin@np.com", 91234567);
@@ -51,7 +51,7 @@ namespace SE_assignment
 
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
-            Order b = new Order(2, "New", DateTime.Now, "Cash", cust2, orderLineList1);
+            Order b = new Order(2, "New", DateTime.Now, "Cash", cust2, orderLineList2);
 
             Globals.MenuList.Add(m1);
             Globals.MenuList.Add(m2);
@@ -67,7 +67,7 @@ namespace SE_assignment
             string role = Console.ReadLine();
             if (role == "1")
             {
-                customerProcess(cust1);
+                customerProcess();
             }
             else if (role == "2")
             {
@@ -90,7 +90,7 @@ namespace SE_assignment
             //Create new order function
             if (option == "A")
             {
-                c.CreateOrder();
+                //c.CreateOrder();
             }
             //View Current and past orders
             else if (option == "B")
@@ -101,10 +101,10 @@ namespace SE_assignment
             {
                 Console.WriteLine("Option does not exist! Try again!");
             }
-            customerProcess(c);
+            customerProcess();
         }
 
-        static void managerProcess(List<Order> ol) {
+        static void managerProcess() {
             Console.WriteLine("\nYou have selected Manager!\nSelect your option:\n[1]Manage food items and menus\n[2]View Orders\nInput Option:");
             string option = Console.ReadLine();
             //Manage food items and menus, including adding/updating/deleting of food items and menus
