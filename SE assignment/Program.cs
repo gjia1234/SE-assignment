@@ -118,6 +118,10 @@ namespace SE_assignment
         {
             Console.WriteLine("You have selected Chef!\n[show list of orders?]\nInput order you wish to prepare:");
             string orderNum = Console.ReadLine();
+            if (orderNum == "1")
+            {
+                Console.WriteLine("GG");
+            }
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
         }
         
