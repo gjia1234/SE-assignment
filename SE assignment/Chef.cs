@@ -10,5 +10,17 @@ namespace SE_assignment
         {
         }
 
+        public void selectOrder(Order o)
+        {
+            o.status = "Preparing";
+            Console.WriteLine("Press enter when order is ready.");
+            Console.ReadLine();
+            o.status = "Ready";
+            o.timeReady = DateTime.Now;
+            Console.WriteLine("Order is done.");
+            Console.WriteLine("Press enter again to close you arsehole.");
+            Console.ReadLine();
+        }
+
     }
 }

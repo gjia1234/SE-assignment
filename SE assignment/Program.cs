@@ -61,7 +61,8 @@ namespace SE_assignment
             }
             else if (role == "3")
             {
-                chefProcess();
+                Chef chef = new Chef("Darren", 1, "S101010G", "MTF", 12345678, DateTime.Now, "Gay");
+                chefProcess(chef);
             }
             else {
                 Console.WriteLine("Option does not exist! Try again!");
@@ -110,16 +111,35 @@ namespace SE_assignment
             }
         }
 
-        static void chefProcess()
+        
+
+        static void chefProcess(Chef c)
         {
-            Console.WriteLine("You have selected Chef!\n[show list of orders?]\nInput order you wish to prepare: ");
-            string orderNum = Console.ReadLine();
-            if (orderNum == "1")
+            while(true)
             {
-                Console.WriteLine("GG");
+                string Options = "You have selected Chef!\n";
+                foreach (Order o in Globals.OrderList)
+                {
+                    if (o.status == "New")
+                    {
+                        Options += o.orderNo + "\n";
+                    }
+                }
+                Options += "Input order you wish to prepare: ";
+                Console.Write(Options);
+                string orderNum = Console.ReadLine();
+                c.selectOrder(Globals.OrderList[int.Parse(orderNum) - 1]);
+                Console.Write("Do you want to complete another order?");
+                string choice = Console.ReadLine();
+                if(choice.ToLower() == "no")
+                {
+                    break;
+                }
             }
+
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
         }
+
         
     }
 }
