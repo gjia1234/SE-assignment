@@ -26,17 +26,13 @@ namespace SE_assignment
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
 
-            FoodItem f1 = new FoodItem(1, "French Fries", "Crispy Potatoes", 3, 1, "Available");
-            FoodItem f2 = new FoodItem(2, "Cheeseburger", "Potato buns filled with beef patty and pickles", 4, 1, "Available");
+            //FoodItem f1 = new FoodItem(1, "French Fries", "Crispy Potatoes", 3, 1, "Available");
+            //FoodItem f2 = new FoodItem(2, "Cheeseburger", "Potato buns filled with beef patty and pickles", 4, 1, "Available");
 
-            foodItemList1.Add(f1);
-            foodItemList1.Add(f2);
+            //Globals.MenuList.Add(f1);
+            //Globals.MenuList.Add(f2);
 
-            List<Menu> menuList = new List<Menu>();
-            menuList.Add(f1);
-            menuList.Add(f2);
-
-
+ 
             Order a = new Order(1, "New", DateTime.Now, 36, 3, 1, 40, "Credit Card", DateTime.Now, DateTime.Now, DateTime.Now, cust1, disp1, orderLineList1);
 
             //Test Data 2
@@ -60,7 +56,6 @@ namespace SE_assignment
             Globals.CustomerList.Add(cust1);
             Globals.OrderList.Add(a);
             Globals.OrderList.Add(b);
-
 
             //Message
             Console.WriteLine("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
@@ -118,7 +113,7 @@ namespace SE_assignment
                     string addOption = Console.ReadLine();
                     if (addOption == "1")
                     {
-                        addItem();
+                        //addItem();
                     }
 
                     else if (addOption == "2")
@@ -129,7 +124,7 @@ namespace SE_assignment
 
                 else if (managerOption == "2")
                 {
-                    //updateItem();
+                    FoodItem.ManagerUpdateItem();
                 }
                 else if (managerOption == "3" )
                 {
@@ -182,21 +177,8 @@ namespace SE_assignment
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
         }
 
-        static void addItem()
-        {
-            Console.WriteLine("Insert item information");
-
-        }
-
-        static void updateItem(List<FoodItem> item)
-        {
-            Console.WriteLine("Please select item to update");
-            foreach(FoodItem f in item)
-            {
-                Console.WriteLine("Item: "+f.name);
-            }
-            
-        }
+  
+        
         
     }
 }

@@ -10,5 +10,19 @@ namespace SE_assignment
         {
 
         }
+
+        public static void ManagerUpdateItem()
+        {
+            Console.WriteLine("Choose which to update");
+            foreach (FoodItem f in Globals.MenuList)
+            {
+                Console.WriteLine("Item Name: " +f.name);
+            }
+        }
+
+        public static void ManagerAddItem()
+        {
+            Console.WriteLine("Fill in details");
+        }
     }
 }
