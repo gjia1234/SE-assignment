@@ -12,7 +12,7 @@ namespace SE_assignment
         public string address { get; set; }
         public string email { get; set; }
         public int hpno { get; set; }
-        public List<Order> OrderList { get; set; }
+        public List<Order> OrderList = new List<Order>();
 
 
     public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
@@ -25,22 +25,17 @@ namespace SE_assignment
         }
         public void CreateOrder()
         {
-            int orderNo = 1;
+            int OrderNo =1;
             if (OrderList != null)
             {
-
-                orderNo = OrderList.Count+1;
+                OrderNo = Globals.OrderList.Count;
             }
             DateTime time = DateTime.Now;
-            Console.WriteLine("How would you like to pay for your order: ");
-            Console.WriteLine("1. Credit card");
-            Console.WriteLine("2. Online methods");
-            Console.Write("Input Option: ");
-            string PaymentMethod = Console.ReadLine();
             List<OrderLine> orderlines = new List<OrderLine>();
             while (true){
                 Console.Write("What item do you want to order: ");
                 String Item = Console.ReadLine();
+                int counter = 0;
                 foreach(Menu m in Globals.MenuList)
                 {
                     if (m.name.ToUpper() == Item.ToUpper())
@@ -50,7 +45,13 @@ namespace SE_assignment
                         int Qty = int.Parse(qty);
                         OrderLine ol = new OrderLine(Qty, m);
                         orderlines.Add(ol);
+                        break;
                     }
+                    counter += 1;
+                }
+                if (counter == Globals.MenuList.Count)
+                {
+                    Console.WriteLine("We could not find the item you were looking for");
                 }
                 Console.Write("Do you want to order another item: ");
                 string Continue = Console.ReadLine();
@@ -59,6 +60,11 @@ namespace SE_assignment
                     break;
                 }
             }
+            Console.WriteLine("How would you like to pay for your order: ");
+            Console.WriteLine("1. Credit card");
+            Console.WriteLine("2. Online methods");
+            Console.Write("Input Option: ");
+            string PaymentMethod = Console.ReadLine();
             if (PaymentMethod == "1")
             {
                 PaymentMethod = "Credit card";
@@ -67,7 +73,11 @@ namespace SE_assignment
             {
                 PaymentMethod = "Online methods";
             }
-            Order newOrder = new Order(orderNo,"Created",time,PaymentMethod, this, orderlines);
+            Order newOrder = new Order(OrderNo, "Created",time,PaymentMethod, this, orderlines);
+            float price = newOrder.subtotal();
+            Console.WriteLine("You have paid " + price.ToString() + " via " + PaymentMethod);
+            OrderList.Add(newOrder);
+            Globals.OrderList.Add(newOrder);
         }
     }
 }
