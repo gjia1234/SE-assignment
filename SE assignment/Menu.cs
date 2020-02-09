@@ -13,7 +13,7 @@ namespace SE_assignment
         public float price { get; set; }
         public int unit  { get; set; }
         public string status { get; set; }
-
+        public List<FoodItem> foodItemList { get; set; }
 
 
         public Menu(int ID, string Name, string Description, float Price, int Unit, string Status)
@@ -25,5 +25,6 @@ namespace SE_assignment
             unit = Unit;
             status = Status;
         }
+
     }
 }

@@ -5,14 +5,17 @@ namespace SE_assignment
 {
     class Program
     {
-        static void Main(string[] args)
-        {   
 
+        static void Main(string[] args)
+        {
+            Console.Title = "Food Ordering System";
             //Test Data for Order
             //Test Data 1
             Customer cust1 = new Customer(1, "Avin", "Ngee Ann Poly", "avin@np.com", 91234567);
             Dispatcher disp1 = new Dispatcher("mohd", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList1 = new List<OrderLine>();
+            List<SetMeal> setMealList1 = new List<SetMeal>();
+            List<FoodItem> foodItemList1 = new List<FoodItem>();
 
             Menu m1 = new Menu(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, "Available");
             OrderLine ol1 = new OrderLine(1, m1);
@@ -21,6 +24,17 @@ namespace SE_assignment
 
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
+
+            FoodItem f1 = new FoodItem(1, "French Fries", "Crispy Potatoes", 3, 1, "Available");
+            FoodItem f2 = new FoodItem(2, "Cheeseburger", "Potato buns filled with beef patty and pickles", 4, 1, "Available");
+
+            foodItemList1.Add(f1);
+            foodItemList1.Add(f2);
+
+            List<Menu> menuList = new List<Menu>();
+            menuList.Add(f1);
+            menuList.Add(f2);
+
 
             Order a = new Order(1, "New", DateTime.Now, 36, 3, 1, 40, "Credit Card", DateTime.Now, DateTime.Now, DateTime.Now, cust1, disp1, orderLineList1);
 
@@ -45,7 +59,7 @@ namespace SE_assignment
 
 
             //Message
-            Console.WriteLine("What is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
+            Console.WriteLine("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
             string role = Console.ReadLine();
             if (role == "1")
             {
@@ -66,7 +80,7 @@ namespace SE_assignment
         }
 
         static void customerProcess() {
-            Console.WriteLine("You have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
+            Console.WriteLine("\nYou have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
             string option = Console.ReadLine();
             //Create new order function
             if (option == "A")
@@ -86,15 +100,43 @@ namespace SE_assignment
         }
 
         static void managerProcess(List<Order> ol) {
-            Console.WriteLine("You have selected Manager!\nSelect your option:\n[A]Manage food items and menus\n[B]View Orders\nInput Option:");
+            Console.WriteLine("\nYou have selected Manager!\nSelect your option:\n[1]Manage food items and menus\n[2]View Orders\nInput Option:");
             string option = Console.ReadLine();
             //Manage food items and menus, including adding/updating/deleting of food items and menus
-            if (option == "A")
+            if (option == "1")
             {
+                Console.WriteLine("\nChoose which to manage!\n[1]Add item/set meal\n[2]Update item/set meal\n[3]Delete item/set meal\nInput what to manage:");
+                string managerOption = Console.ReadLine();
+                if (managerOption == "1")
+                {
+                    Console.WriteLine("\nChoose which to add\n[1]Add new item\n[2]Add new set meal\nInput selection:");
+                    string addOption = Console.ReadLine();
+                    if (addOption == "1")
+                    {
+                        addItem();
+                    }
 
+                    else if (addOption == "2")
+                    {
+                        
+                    }
+                }
+
+                else if (managerOption == "2")
+                {
+                    //updateItem();
+                }
+                else if (managerOption == "3" )
+                {
+
+                }
+                else
+                {
+                    Console.WriteLine("Option does not exist! Try again!");
+                }
             }
             //View orders using various filters such as new, cancelled, delivered, etc
-            else if (option == "B")
+            else if (option == "2")
             {
                 Console.WriteLine("All Orders:");
                 foreach (Order o in ol) {
@@ -116,9 +158,25 @@ namespace SE_assignment
 
         static void chefProcess()
         {
-            Console.WriteLine("You have selected Chef!\n[show list of orders?]\nInput order you wish to prepare:");
+            Console.WriteLine("\nYou have selected Chef!\n[show list of orders?]\nInput order you wish to prepare:");
             string orderNum = Console.ReadLine();
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
+        }
+
+        static void addItem()
+        {
+            Console.WriteLine("Insert item information");
+
+        }
+
+        static void updateItem(List<FoodItem> item)
+        {
+            Console.WriteLine("Please select item to update");
+            foreach(FoodItem f in item)
+            {
+                Console.WriteLine("Item: "+f.name);
+            }
+            
         }
         
     }
