@@ -11,6 +11,7 @@ namespace SE_assignment
             Console.Title = "Food Ordering System";
             //Test Data for Order
             //Test Data 1
+
             Customer cust1 = new Customer(1, "Avin", "Ngee Ann Poly", "avin@np.com", 91234567);
             Dispatcher disp1 = new Dispatcher("mohd", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList1 = new List<OrderLine>();
@@ -19,7 +20,7 @@ namespace SE_assignment
 
             Menu m1 = new Menu(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, "Available");
             OrderLine ol1 = new OrderLine(1, m1);
-            Menu m2 = new Menu(1, "Chicken Whole", "Tasty Chicken ", 12, 1, "Available");
+            Menu m2 = new Menu(1, "Whole Chicken", "Tasty Chicken ", 12, 1, "Available");
             OrderLine ol2 = new OrderLine(2, m2);
 
             orderLineList1.Add(ol1);
@@ -43,19 +44,22 @@ namespace SE_assignment
             Dispatcher disp2 = new Dispatcher("Ali", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList2 = new List<OrderLine>();
 
-            Menu m3 = new Menu(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, "Available");
+            Menu m3 = new Menu(1, "Chicken Burger", "Tasty Chicken Nugget", 12, 1, "Available");
             OrderLine ol3 = new OrderLine(1, m1);
-            Menu m4 = new Menu(1, "Chicken Whole", "Tasty Chicken ", 12, 1, "Available");
+            Menu m4 = new Menu(1, "Pasta", "Tasty Chicken ", 12, 1, "Available");
             OrderLine ol4 = new OrderLine(2, m2);
 
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
+            Order b = new Order(2, "New", DateTime.Now, "Cash", cust2, orderLineList1);
 
-            Order b = new Order(2, "New", DateTime.Now, 36, 3, 1, 40, "Cash", DateTime.Now, DateTime.Now, DateTime.Now, cust2, disp2, orderLineList1);
-
-            List<Order> orderList = new List<Order>();
-            orderList.Add(a);
-            orderList.Add(b);
+            Globals.MenuList.Add(m1);
+            Globals.MenuList.Add(m2);
+            Globals.MenuList.Add(m3);
+            Globals.MenuList.Add(m4);
+            Globals.CustomerList.Add(cust1);
+            Globals.OrderList.Add(a);
+            Globals.OrderList.Add(b);
 
 
             //Message
@@ -63,15 +67,16 @@ namespace SE_assignment
             string role = Console.ReadLine();
             if (role == "1")
             {
-                customerProcess();
+                customerProcess(cust1);
             }
             else if (role == "2")
             {
-                managerProcess(orderList);
+                managerProcess();
             }
             else if (role == "3")
             {
-                chefProcess();
+                Chef chef = new Chef("Darren", 1, "S101010G", "MTF", 12345678, DateTime.Now, "Gay");
+                chefProcess(chef);
             }
             else {
                 Console.WriteLine("Option does not exist! Try again!");
@@ -85,7 +90,7 @@ namespace SE_assignment
             //Create new order function
             if (option == "A")
             {
-
+                c.CreateOrder();
             }
             //View Current and past orders
             else if (option == "B")
@@ -95,8 +100,8 @@ namespace SE_assignment
             else
             {
                 Console.WriteLine("Option does not exist! Try again!");
-                customerProcess();
             }
+            customerProcess(c);
         }
 
         static void managerProcess(List<Order> ol) {
@@ -138,28 +143,42 @@ namespace SE_assignment
             //View orders using various filters such as new, cancelled, delivered, etc
             else if (option == "2")
             {
-                Console.WriteLine("All Orders:");
-                foreach (Order o in ol) {
-                    //",Created Time:"+o.createDateTime+
-                    Console.WriteLine("Order No:"+o.orderNo+", Status:"+o.status+", Total Payment Amount:"+o.totalPaymentAmt+", Payment Method:"+o.paymentMethod+", Time Ready:"+o.timeReady+", Time Delivered:"+o.timeDelivered+", Customer Name:"+o.cust.name+", Dispatcher Name:"+o.disp.name+"\n");
-                }
-                Console.WriteLine("Enter your filter");
-                //new, preparing, ready, dispatched, delivered, cancelled
-
-                string optioasn = Console.ReadLine();
+                Order.managerViewOrder();
 
             }
             else
             {
                 Console.WriteLine("Option does not exist! Try again!");
-                managerProcess(ol);
+                managerProcess();
             }
         }
 
-        static void chefProcess()
+        
+
+        static void chefProcess(Chef c)
         {
-            Console.WriteLine("\nYou have selected Chef!\n[show list of orders?]\nInput order you wish to prepare:");
-            string orderNum = Console.ReadLine();
+            while(true)
+            {
+                string Options = "You have selected Chef!\n";
+                foreach (Order o in Globals.OrderList)
+                {
+                    if (o.status == "New")
+                    {
+                        Options += o.orderNo + "\n";
+                    }
+                }
+                Options += "Input order you wish to prepare: ";
+                Console.Write(Options);
+                string orderNum = Console.ReadLine();
+                c.selectOrder(Globals.OrderList[int.Parse(orderNum) - 1]);
+                Console.Write("Do you want to complete another order?");
+                string choice = Console.ReadLine();
+                if(choice.ToLower() == "no")
+                {
+                    break;
+                }
+            }
+
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
         }
 

@@ -9,8 +9,11 @@ namespace SE_assignment
 
         public int qty { get; set; }
         public Menu menu { get; set; }
-
-
+        public float Cost{
+            get{
+                return qty * menu.price;
+            }
+        }
         public OrderLine(int Qty,Menu Menu)
         {
             qty = Qty;
