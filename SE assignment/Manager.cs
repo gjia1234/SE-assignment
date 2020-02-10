@@ -13,7 +13,19 @@ namespace SE_assignment
             startTime = StartTime;
         }
 
-       
+        public static void ManagerUpdateItem()
+        {
+            Console.WriteLine("Choose which to update");
+            foreach (Menu m in Globals.MenuList)
+            {
+                Console.WriteLine("Item Name: " + m.name);
+            }
+        }
+
+        public static void ManagerAddItem()
+        {
+            Console.WriteLine("Fill in details");
+        }
     }
         
         

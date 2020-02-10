@@ -32,9 +32,9 @@ namespace SE_assignment
             //Globals.MenuList.Add(f1);
             //Globals.MenuList.Add(f2);
 
-            List<Menu> menuList = new List<Menu>();
-            menuList.Add(f1);
-            menuList.Add(f2);
+            //List<Menu> menuList = new List<Menu>();
+            //menuList.Add(f1);
+            //menuList.Add(f2);
 
 
             Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
@@ -115,22 +115,24 @@ namespace SE_assignment
                 {
                     Console.WriteLine("\nChoose which to add\n[1]Add new item\n[2]Add new set meal\nInput selection:");
                     string addOption = Console.ReadLine();
-                    if (addOption == "1")
+                    if (addOption == "1") // Add item
                     {
                         //addItem();
                     }
 
-                    else if (addOption == "2")
+                    else if (addOption == "2")// Add Set Meal
                     {
                         
                     }
                 }
 
-                else if (managerOption == "2")
+                else if (managerOption == "2") // Update Item/Set meal
                 {
-                    FoodItem.ManagerUpdateItem();
+                    
+                    Manager.ManagerUpdateItem();
+                    Console.ReadLine();
                 }
-                else if (managerOption == "3" )
+                else if (managerOption == "3" ) // Delete item/set meal
                 {
 
                 }
