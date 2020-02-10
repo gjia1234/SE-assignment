@@ -8,7 +8,7 @@ namespace SE_assignment
     {
         public int size { get; set; }
 
-        public SetMeal(int ID, string Name, string Description, int Price, int Unit, string Status, int Size) : base(ID, Name, Description, Price, Unit, Status)
+        public SetMeal(int ID, string Name, string Description, float Price, int Unit, int Size) : base(ID, Name, Description, Price, Unit)
         {
             size = Size;
         }

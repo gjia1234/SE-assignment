@@ -18,9 +18,9 @@ namespace SE_assignment
             List<SetMeal> setMealList1 = new List<SetMeal>();
             List<FoodItem> foodItemList1 = new List<FoodItem>();
 
-            Menu m1 = new Menu(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, "Available");
+            FoodItem m1 = new FoodItem(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1);
             OrderLine ol1 = new OrderLine(1, m1);
-            Menu m2 = new Menu(1, "Whole Chicken", "Tasty Chicken ", 12, 1, "Available");
+            FoodItem m2 = new FoodItem(1, "Whole Chicken", "Tasty Chicken ", 12, 1);
             OrderLine ol2 = new OrderLine(2, m2);
 
             orderLineList1.Add(ol1);
@@ -44,9 +44,9 @@ namespace SE_assignment
             Dispatcher disp2 = new Dispatcher("Ali", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList2 = new List<OrderLine>();
 
-            Menu m3 = new Menu(1, "Chicken Burger", "Tasty Chicken Nugget", 12, 1, "Available");
+            FoodItem m3 = new FoodItem(1, "Chicken Burger", "Tasty Chicken Nugget", 12, 1);
             OrderLine ol3 = new OrderLine(1, m1);
-            Menu m4 = new Menu(1, "Pasta", "Tasty Chicken ", 12, 1, "Available");
+            FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1);
             OrderLine ol4 = new OrderLine(2, m2);
 
             orderLineList2.Add(ol1);
@@ -118,7 +118,7 @@ namespace SE_assignment
                     string addOption = Console.ReadLine();
                     if (addOption == "1") // Add item
                     {
-                        //addItem();
+                        Manager.ManagerAddItem();
                     }
 
                     else if (addOption == "2")// Add Set Meal
@@ -129,9 +129,24 @@ namespace SE_assignment
 
                 else if (managerOption == "2") // Update Item/Set meal
                 {
-                    
-                    Manager.ManagerUpdateItem();
-                    Console.ReadLine();
+
+                    Console.WriteLine("\nSelect which to update");
+                    Console.WriteLine("[1]Update item");
+                    Console.WriteLine("[2]Update set meal");
+                    Console.WriteLine("Input selection: ");
+
+                    string updateOption = Console.ReadLine();
+
+                    if (updateOption == "1") // Update single item
+                    {
+                        Manager.ManagerUpdateItem();
+                        Console.ReadLine();
+                    }
+                    else if (updateOption == "2") //Update set meal
+                    {
+
+                    }
+                   
                 }
                 else if (managerOption == "3" ) // Delete item/set meal
                 {
