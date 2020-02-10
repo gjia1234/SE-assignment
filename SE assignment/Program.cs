@@ -42,6 +42,19 @@ namespace SE_assignment
             FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1);
             OrderLine ol4 = new OrderLine(2, m2);
 
+            List<FoodItem> s1list = new List<FoodItem>();
+            s1list.Add(m3);
+            s1list.Add(m4);
+            SetMeal s1 = new SetMeal(10, "Pasta and Burger Meal", s1list, "Great meal with both a chicken burger and pasta", 20, 300, 2);
+
+            List<FoodItem> s2list = new List<FoodItem>();
+            s2list.Add(m1);
+            s2list.Add(m2);
+            SetMeal s2 = new SetMeal(20, "Nugget and Whole Chicken Meal", s2list, "Get best of both chickens", 30, 200, 4);
+
+            Globals.MenuList.Add(s1);
+            Globals.MenuList.Add(s2);
+
             //new, preparing, ready, dispatched, delivered, cancelled
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
@@ -90,15 +103,20 @@ namespace SE_assignment
         }
 
         static void customerProcess(Customer c) {
-            Console.Write("\nYou have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
+            Console.WriteLine("\nYou have selected Customer!");
+            Console.WriteLine("Choose what to do today: ");
+            Console.WriteLine("[1]Create a new order");
+            Console.WriteLine("[2]View Current and Past Orders");
+            Console.WriteLine("Input Selection: ");
+
             string option = Console.ReadLine();
             //Create new order function
-            if (option == "A")
+            if (option == "1")
             {
                 c.CreateOrder();
             }
             //View Current and past orders
-            else if (option == "B")
+            else if (option == "2")
             {
 
             }
@@ -111,16 +129,30 @@ namespace SE_assignment
         }
 
         static void managerProcess() {
-            Console.WriteLine("\nYou have selected Manager!\nSelect your option:\n[1]Manage food items and menus\n[2]View Orders\nInput Option:");
+            Console.WriteLine("\nYou have selected Manager!");
+            Console.WriteLine("Choose what to do today: ");
+            Console.WriteLine("[1] Manage Menu");
+            Console.WriteLine("[2] View Orders");
+            Console.WriteLine("Input Selection: ");
+
             string option = Console.ReadLine();
             //Manage food items and menus, including adding/updating/deleting of food items and menus
             if (option == "1")
             {
-                Console.WriteLine("\nChoose which to manage!\n[1]Add item/set meal\n[2]Update item/set meal\n[3]Delete item/set meal\nInput what to manage:");
+                Console.WriteLine("\nChoose which to manage!");
+                Console.WriteLine("[1]Add Item / Set Meal");
+                Console.WriteLine("[2]Update Item / Set Meal");
+                Console.WriteLine("[3]Delete Item / Set Meal");
+                Console.WriteLine("Input Selection: ");
+
                 string managerOption = Console.ReadLine();
                 if (managerOption == "1")
                 {
-                    Console.WriteLine("\nChoose which to add\n[1]Add new item\n[2]Add new set meal\nInput selection:");
+                    Console.WriteLine("\nChoose which to add");
+                    Console.WriteLine("[1]Add New Item");
+                    Console.WriteLine("[2]Add New Set Meal");
+                    Console.WriteLine("Input Selection: ");
+
                     string addOption = Console.ReadLine();
 
                     // Add single item
@@ -132,7 +164,7 @@ namespace SE_assignment
                     // Add Set Meal
                     else if (addOption == "2")
                     {
-                        
+                        Manager.ManagerAddSetMeal();
                     }
                 }
 
@@ -157,7 +189,8 @@ namespace SE_assignment
                     //Update set meal
                     else if (updateOption == "2") 
                     {
-
+                        Manager.ManagerUpdateSetMeal();
+                        Console.ReadLine();
                     }
                    
                 }
@@ -181,7 +214,7 @@ namespace SE_assignment
                     //delete single set meal
                     else if (deleteOption == "2")
                     {
-
+                        Manager.ManagerDeleteSetMeal();
                     }
                 }
                 else
