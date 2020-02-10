@@ -71,24 +71,28 @@ namespace SE_assignment
             Globals.OrderList.Add(f);
 
             //Message
-            Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
-            string role = Console.ReadLine();
-            if (role == "1")
+            while (true)
             {
-                customerProcess(cust1);
-            }
-            else if (role == "2")
-            {
-                managerProcess();
-            }
-            else if (role == "3")
-            {
-                Chef chef = new Chef("Darren", 1, "S101010G", "MTF", 12345678, DateTime.Now, "Gay");
-                chefProcess(chef);
-            }
-            else {
-                Console.WriteLine("Option does not exist! Try again!");
-                Main(args);
+                Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
+                string role = Console.ReadLine();
+                if (role == "1")
+                {
+                    customerProcess(cust1);
+                }
+                else if (role == "2")
+                {
+                    managerProcess();
+                }
+                else if (role == "3")
+                {
+                    Chef chef = new Chef("Darren", 1, "S101010G", "MTF", 12345678, DateTime.Now, "Gay");
+                    chefProcess(chef);
+                }
+                else
+                {
+                    Console.WriteLine("Option does not exist! Try again!");
+                    Main(args);
+                }
             }
         }
 

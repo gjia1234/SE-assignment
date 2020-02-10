@@ -70,9 +70,9 @@ namespace SE_assignment
             //new, preparing, ready, dispatched, delivered, cancelled
             string filter = Console.ReadLine();
             List<Order> filtered = new List<Order>();
-
             if (filter == "1")
             {
+                Console.WriteLine("Selected filter: View All");
                 foreach (Order o in Globals.OrderList)
                 {
                     filtered.Add(o);
@@ -80,6 +80,7 @@ namespace SE_assignment
             }
             else if (filter == "2")
             {
+                Console.WriteLine("Selected filter: New");
                 foreach (Order o in Globals.OrderList)
                 {
                     if (o.status == "New")
@@ -90,6 +91,7 @@ namespace SE_assignment
             }
             else if (filter == "3")
             {
+                Console.WriteLine("Selected filter: Preparing");
                 foreach (Order o in Globals.OrderList)
                 {
                     if (o.status == "Preparing")
@@ -100,6 +102,7 @@ namespace SE_assignment
             }
             else if (filter == "4")
             {
+                Console.WriteLine("Selected filter: Ready");
                 foreach (Order o in Globals.OrderList)
                 {
                     if (o.status == "Ready")
@@ -110,6 +113,7 @@ namespace SE_assignment
             }
             else if (filter == "5")
             {
+                Console.WriteLine("Selected filter: Dispatched");
                 foreach (Order o in Globals.OrderList)
                 {
                     if (o.status == "Dispatched")
@@ -120,6 +124,7 @@ namespace SE_assignment
             }
             else if (filter == "6")
             {
+                Console.WriteLine("Selected filter: Delivered");
                 foreach (Order o in Globals.OrderList)
                 {
                     if (o.status == "Delivered")
@@ -130,6 +135,7 @@ namespace SE_assignment
             }
             else if (filter == "7")
             {
+                Console.WriteLine("Selected filter: Cancelled");
                 foreach (Order o in Globals.OrderList)
                 {
                     if (o.status == "Cancelled")
@@ -141,7 +147,6 @@ namespace SE_assignment
             else
             {
                 Console.WriteLine("Invalid filter. Please Try again\n\n");
-                managerViewOrder();
             }
             int c = filtered.Count;
             if (c == 0) {
@@ -152,10 +157,10 @@ namespace SE_assignment
                 foreach (Order o in filtered)
                 {
                 
-                    Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Customer Name:" + o.cust.name + "\n");
+                    Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Customer Name:" + o.cust.name);
                 }
-                Console.ReadLine();
             }
+            
         }
 
         IOrderListIterator IOrder.CreateIterator()
