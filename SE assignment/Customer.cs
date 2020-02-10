@@ -82,7 +82,7 @@ namespace SE_assignment
                 }
                 Console.WriteLine("Please choose a valid option.");
             }
-            Order newOrder = new Order(OrderNo, "new",time,PaymentMethod, this, orderlines);
+            Order newOrder = new Order(OrderNo, "New",time,PaymentMethod, this, orderlines);
             float price = newOrder.subtotal();
             Console.WriteLine("You have paid $" + price.ToString("0.00") + " via " + PaymentMethod);
             OrderList.Add(newOrder);
