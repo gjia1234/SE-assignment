@@ -63,11 +63,11 @@ namespace SE_assignment
 
 
             //Message
-            Console.WriteLine("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
+            Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
             string role = Console.ReadLine();
             if (role == "1")
             {
-                customerProcess();
+                customerProcess(cust1);
             }
             else if (role == "2")
             {
@@ -84,13 +84,13 @@ namespace SE_assignment
             }
         }
 
-        static void customerProcess() {
-            Console.WriteLine("\nYou have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
+        static void customerProcess(Customer c) {
+            Console.Write("\nYou have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
             string option = Console.ReadLine();
             //Create new order function
             if (option == "A")
             {
-                //c.CreateOrder();
+                c.CreateOrder();
             }
             //View Current and past orders
             else if (option == "B")
@@ -100,8 +100,9 @@ namespace SE_assignment
             else
             {
                 Console.WriteLine("Option does not exist! Try again!");
+                customerProcess(c);
             }
-            customerProcess();
+            
         }
 
         static void managerProcess() {

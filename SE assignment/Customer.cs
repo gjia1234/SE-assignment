@@ -14,8 +14,8 @@ namespace SE_assignment
         public int hpno { get; set; }
         public List<Order> OrderList = new List<Order>();
 
-
-    public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
+    //customer constructor
+        public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
         {
             accountNo = AccountNo;
             name = Name;
@@ -23,6 +23,7 @@ namespace SE_assignment
             email = Email;
             hpno = HPno;
         }
+        //
         public void CreateOrder()
         {
             int OrderNo =1;
@@ -55,29 +56,38 @@ namespace SE_assignment
                 }
                 Console.Write("Do you want to order another item: ");
                 string Continue = Console.ReadLine();
-                if (Continue == "No")
+                if (Continue.ToUpper() == "NO")
                 {
                     break;
                 }
             }
-            Console.WriteLine("How would you like to pay for your order: ");
-            Console.WriteLine("1. Credit card");
-            Console.WriteLine("2. Online methods");
-            Console.Write("Input Option: ");
-            string PaymentMethod = Console.ReadLine();
-            if (PaymentMethod == "1")
+            string PaymentMethod = "";
+
+            while (true)
             {
-                PaymentMethod = "Credit card";
+                Console.WriteLine("How would you like to pay for your order: ");
+                Console.WriteLine("1. Credit card");
+                Console.WriteLine("2. Online methods");
+                Console.Write("Input Option: ");
+                PaymentMethod = Console.ReadLine();
+                if (PaymentMethod == "1")
+                {
+                    PaymentMethod = "Credit card";
+                    break;
+                }
+                else if (PaymentMethod == "2")
+                {
+                    PaymentMethod = "Online methods";
+                    break;
+                }
+                Console.WriteLine("Please choose a valid option.");
             }
-            else
-            {
-                PaymentMethod = "Online methods";
-            }
-            Order newOrder = new Order(OrderNo, "Created",time,PaymentMethod, this, orderlines);
+            Order newOrder = new Order(OrderNo, "new",time,PaymentMethod, this, orderlines);
             float price = newOrder.subtotal();
-            Console.WriteLine("You have paid " + price.ToString() + " via " + PaymentMethod);
+            Console.WriteLine("You have paid $" + price.ToString("0.00") + " via " + PaymentMethod);
             OrderList.Add(newOrder);
             Globals.OrderList.Add(newOrder);
+            Console.ReadLine();
         }
     }
 }
