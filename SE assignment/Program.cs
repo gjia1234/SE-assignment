@@ -23,19 +23,12 @@ namespace SE_assignment
             FoodItem m2 = new FoodItem(1, "Whole Chicken", "Tasty Chicken ", 12, 1);
             OrderLine ol2 = new OrderLine(2, m2);
 
+            //SetMeal sm1 = new SetMeal(1, "Chicken Nugget Meal", "Comes with tasty fries, 6pc nuggets", 20, 1, 2);
+           // SetMeal sm2 = new SetMeal(2, "Spring Chicken Meal", "Comes with Whole Fried Chicken and fries", 25, 1, 4);
+
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
-
-            //FoodItem f1 = new FoodItem(1, "French Fries", "Crispy Potatoes", 3, 1, "Available");
-            //FoodItem f2 = new FoodItem(2, "Cheeseburger", "Potato buns filled with beef patty and pickles", 4, 1, "Available");
-
-            //Globals.MenuList.Add(f1);
-            //Globals.MenuList.Add(f2);
-
-            //List<Menu> menuList = new List<Menu>();
-            //menuList.Add(f1);
-            //menuList.Add(f2);
-
+            
 
             Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
 
@@ -44,10 +37,11 @@ namespace SE_assignment
             Dispatcher disp2 = new Dispatcher("Ali", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList2 = new List<OrderLine>();
 
-            FoodItem m3 = new FoodItem(1, "Chicken Burger", "Tasty Chicken Nugget", 12, 1);
+            FoodItem m3 = new FoodItem(1, "Chicken Burger", "Tasty Chicken Patty", 12, 1);
             OrderLine ol3 = new OrderLine(1, m1);
             FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1);
             OrderLine ol4 = new OrderLine(2, m2);
+
 
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
@@ -60,6 +54,8 @@ namespace SE_assignment
             Globals.CustomerList.Add(cust1);
             Globals.OrderList.Add(a);
             Globals.OrderList.Add(b);
+            //Globals.MenuList.Add(sm1);
+            //Globals.MenuList.Add(sm2);
 
             //Message
             Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
@@ -116,18 +112,22 @@ namespace SE_assignment
                 {
                     Console.WriteLine("\nChoose which to add\n[1]Add new item\n[2]Add new set meal\nInput selection:");
                     string addOption = Console.ReadLine();
-                    if (addOption == "1") // Add item
+
+                    // Add single item
+                    if (addOption == "1") 
                     {
                         Manager.ManagerAddItem();
                     }
 
-                    else if (addOption == "2")// Add Set Meal
+                    // Add Set Meal
+                    else if (addOption == "2")
                     {
                         
                     }
                 }
 
-                else if (managerOption == "2") // Update Item/Set meal
+                // Update Item/Set meal
+                else if (managerOption == "2") 
                 {
 
                     Console.WriteLine("\nSelect which to update");
@@ -137,20 +137,42 @@ namespace SE_assignment
 
                     string updateOption = Console.ReadLine();
 
-                    if (updateOption == "1") // Update single item
+                    // Update single item
+                    if (updateOption == "1") 
                     {
                         Manager.ManagerUpdateItem();
                         Console.ReadLine();
                     }
-                    else if (updateOption == "2") //Update set meal
+
+                    //Update set meal
+                    else if (updateOption == "2") 
                     {
 
                     }
                    
                 }
-                else if (managerOption == "3" ) // Delete item/set meal
-                {
 
+                // Delete item/set meal
+                else if (managerOption == "3" ) 
+                {
+                    Console.WriteLine("\nSelect which to delete from");
+                    Console.WriteLine("[1]Delete Item");
+                    Console.WriteLine("[2]Delete Set Meal");
+                    Console.WriteLine("Input Selection: ");
+
+                    string deleteOption = Console.ReadLine();
+
+                    //delete single item
+                    if(deleteOption == "1")
+                    {
+                        Manager.ManagerDeleteItem();
+                    }
+                    
+                    //delete single set meal
+                    else if (deleteOption == "2")
+                    {
+
+                    }
                 }
                 else
                 {

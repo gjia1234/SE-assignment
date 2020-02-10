@@ -14,7 +14,7 @@ namespace SE_assignment
         }
 
         // Update single item
-        public static void ManagerUpdateItem() 
+        public static void ManagerUpdateItem()
         {
             Console.WriteLine("\nChoose which to update");
             foreach (Menu m in Globals.MenuList)
@@ -23,14 +23,14 @@ namespace SE_assignment
             }
             Console.Write("\nSelect Item name: ");
             String name = Console.ReadLine();
-            foreach(Menu m in Globals.MenuList)
+            foreach (Menu m in Globals.MenuList)
             {
-                if(name.ToUpper() == m.name.ToUpper())
+                if (name.ToUpper() == m.name.ToUpper())
                 {
                     Console.WriteLine("Name: " + m.name);
-                    Console.WriteLine("Description: "+m.description);
-                    Console.WriteLine("Price: "+ m.price);
-                    Console.WriteLine("Quantity: "+ m.unit);
+                    Console.WriteLine("Description: " + m.description);
+                    Console.WriteLine("Price: " + m.price);
+                    Console.WriteLine("Quantity: " + m.unit);
 
                     Console.WriteLine("\nUpdate item Info:");
                     Console.WriteLine("Input 'Same' if you want to keep the old information");
@@ -42,7 +42,7 @@ namespace SE_assignment
                     string newprice = Console.ReadLine();
                     Console.Write("New Quantity: ");
                     string newQty = Console.ReadLine();
-                    if(newname.ToUpper() != "SAME")
+                    if (newname.ToUpper() != "SAME")
                     {
                         m.name = newname;
                     }
@@ -51,11 +51,11 @@ namespace SE_assignment
                     {
                         m.description = newdesc;
                     }
-                    if(newprice.ToUpper() != "SAME")
+                    if (newprice.ToUpper() != "SAME")
                     {
                         m.price = float.Parse(newprice);
                     }
-                    if(newQty.ToUpper() != "SAME")
+                    if (newQty.ToUpper() != "SAME")
                     {
                         m.unit = int.Parse(newQty);
                     }
@@ -73,7 +73,7 @@ namespace SE_assignment
         }
 
         // Add single item
-        public static void ManagerAddItem() 
+        public static void ManagerAddItem()
         {
             Console.WriteLine("\nFill in Item details");
             Console.Write("Name: ");
@@ -89,7 +89,7 @@ namespace SE_assignment
             FoodItem newitem = new FoodItem(id, addItemName, addItemDesc, float.Parse(addItemPrice), int.Parse(addItemQty));
             Console.WriteLine("Item added successfully!");
             Console.ReadLine();
-            
+
         }
 
         public static void ManagerDeleteItem()
@@ -101,17 +101,26 @@ namespace SE_assignment
             }
             Console.Write("\nSelect Item name: ");
             String name = Console.ReadLine();
-
+            int count = 0;
             foreach (Menu m in Globals.MenuList)
             {
                 if (name.ToUpper() == m.name.ToUpper())
                 {
-
+                    break;
                 }
+                count += 1;
             }
+            Console.WriteLine(Globals.MenuList[count].name);
+            Globals.MenuList.RemoveAt(count);
+            Console.WriteLine("Delete Succesful!");
+            foreach (Menu m in Globals.MenuList)
+            {
+                Console.WriteLine("Item Name: " + m.name);
+            }
+            Console.ReadLine();
+        }
+
     }
-        
-        
     
 }
 
