@@ -156,8 +156,12 @@ namespace SE_assignment
             else { 
                 foreach (Order o in filtered)
                 {
-                
-                    Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Customer Name:" + o.cust.name);
+                    Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Order Created Time:" + o.createDateTime +", Customer ID:" +o.cust.accountNo + ", Customer Name:" + o.cust.name);
+                    foreach (OrderLine ol in o.orderlineList)
+                    {
+                        Console.WriteLine("Food Name:" + ol.menu.name + ", Quantity:" + ol.menu.unit);
+                    }
+                    Console.WriteLine();
                 }
             }
             
