@@ -18,23 +18,23 @@ namespace SE_assignment
             List<SetMeal> setMealList1 = new List<SetMeal>();
             List<FoodItem> foodItemList1 = new List<FoodItem>();
 
-            Menu m1 = new Menu(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, "Available");
+            FoodItem m1 = new FoodItem(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1);
             OrderLine ol1 = new OrderLine(1, m1);
-            Menu m2 = new Menu(1, "Whole Chicken", "Tasty Chicken ", 12, 1, "Available");
+            FoodItem m2 = new FoodItem(1, "Whole Chicken", "Tasty Chicken ", 12, 1);
             OrderLine ol2 = new OrderLine(2, m2);
 
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
 
-            FoodItem f1 = new FoodItem(1, "French Fries", "Crispy Potatoes", 3, 1, "Available");
-            FoodItem f2 = new FoodItem(2, "Cheeseburger", "Potato buns filled with beef patty and pickles", 4, 1, "Available");
+            //FoodItem f1 = new FoodItem(1, "French Fries", "Crispy Potatoes", 3, 1, "Available");
+            //FoodItem f2 = new FoodItem(2, "Cheeseburger", "Potato buns filled with beef patty and pickles", 4, 1, "Available");
 
-            foodItemList1.Add(f1);
-            foodItemList1.Add(f2);
+            //Globals.MenuList.Add(f1);
+            //Globals.MenuList.Add(f2);
 
-            List<Menu> menuList = new List<Menu>();
-            menuList.Add(f1);
-            menuList.Add(f2);
+            //List<Menu> menuList = new List<Menu>();
+            //menuList.Add(f1);
+            //menuList.Add(f2);
 
 
             Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
@@ -44,9 +44,9 @@ namespace SE_assignment
             Dispatcher disp2 = new Dispatcher("Ali", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList2 = new List<OrderLine>();
 
-            Menu m3 = new Menu(1, "Chicken Burger", "Tasty Chicken Nugget", 12, 1, "Available");
+            FoodItem m3 = new FoodItem(1, "Chicken Burger", "Tasty Chicken Nugget", 12, 1);
             OrderLine ol3 = new OrderLine(1, m1);
-            Menu m4 = new Menu(1, "Pasta", "Tasty Chicken ", 12, 1, "Available");
+            FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1);
             OrderLine ol4 = new OrderLine(2, m2);
 
             //new, preparing, ready, dispatched, delivered, cancelled
@@ -70,13 +70,12 @@ namespace SE_assignment
             Globals.OrderList.Add(e);
             Globals.OrderList.Add(f);
 
-
             //Message
-            Console.WriteLine("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
+            Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
             string role = Console.ReadLine();
             if (role == "1")
             {
-                customerProcess();
+                customerProcess(cust1);
             }
             else if (role == "2")
             {
@@ -93,13 +92,13 @@ namespace SE_assignment
             }
         }
 
-        static void customerProcess() {
-            Console.WriteLine("\nYou have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
+        static void customerProcess(Customer c) {
+            Console.Write("\nYou have selected Customer!\nSelect your option:\n[A]Create a new order\n[B]View Current and Past Orders\nInput Option:");
             string option = Console.ReadLine();
             //Create new order function
             if (option == "A")
             {
-                //c.CreateOrder();
+                c.CreateOrder();
             }
             //View Current and past orders
             else if (option == "B")
@@ -109,8 +108,9 @@ namespace SE_assignment
             else
             {
                 Console.WriteLine("Option does not exist! Try again!");
+                customerProcess(c);
             }
-            customerProcess();
+            
         }
 
         static void managerProcess() {
@@ -125,22 +125,39 @@ namespace SE_assignment
                 {
                     Console.WriteLine("\nChoose which to add\n[1]Add new item\n[2]Add new set meal\nInput selection:");
                     string addOption = Console.ReadLine();
-                    if (addOption == "1")
+                    if (addOption == "1") // Add item
                     {
-                        addItem();
+                        Manager.ManagerAddItem();
                     }
 
-                    else if (addOption == "2")
+                    else if (addOption == "2")// Add Set Meal
                     {
                         
                     }
                 }
 
-                else if (managerOption == "2")
+                else if (managerOption == "2") // Update Item/Set meal
                 {
-                    //updateItem();
+
+                    Console.WriteLine("\nSelect which to update");
+                    Console.WriteLine("[1]Update item");
+                    Console.WriteLine("[2]Update set meal");
+                    Console.WriteLine("Input selection: ");
+
+                    string updateOption = Console.ReadLine();
+
+                    if (updateOption == "1") // Update single item
+                    {
+                        Manager.ManagerUpdateItem();
+                        Console.ReadLine();
+                    }
+                    else if (updateOption == "2") //Update set meal
+                    {
+
+                    }
+                   
                 }
-                else if (managerOption == "3" )
+                else if (managerOption == "3" ) // Delete item/set meal
                 {
 
                 }
@@ -191,21 +208,8 @@ namespace SE_assignment
             //Allow a chef to select the order he wishes to prepare and update the order for dispatch once the order is ready.
         }
 
-        static void addItem()
-        {
-            Console.WriteLine("Insert item information");
-
-        }
-
-        static void updateItem(List<FoodItem> item)
-        {
-            Console.WriteLine("Please select item to update");
-            foreach(FoodItem f in item)
-            {
-                Console.WriteLine("Item: "+f.name);
-            }
-            
-        }
+  
+        
         
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SE_assignment
 {
-    class Menu
+    abstract class Menu
     {
 
         public int id { get; set; }
@@ -12,18 +12,19 @@ namespace SE_assignment
         public string description { get; set; }
         public float price { get; set; }
         public int unit  { get; set; }
-        public string status { get; set; }
+        public bool status {
+            get { return unit > 0; }
+        }
         public List<FoodItem> foodItemList { get; set; }
 
 
-        public Menu(int ID, string Name, string Description, float Price, int Unit, string Status)
+        public Menu(int ID, string Name, string Description, float Price, int Unit)
         {
             id = ID;
             name = Name;
             description = Description;
             price = Price;
             unit = Unit;
-            status = Status;
         }
 
     }
