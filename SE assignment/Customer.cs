@@ -27,9 +27,9 @@ namespace SE_assignment
         public void CreateOrder()
         {
             int OrderNo =1;
-            if (OrderList != null)
+            if (Globals.OrderList != null)
             {
-                OrderNo = Globals.OrderList.Count;
+                OrderNo = Globals.OrderList.Count +1;
             }
             DateTime time = DateTime.Now;
             List<OrderLine> orderlines = new List<OrderLine>();
