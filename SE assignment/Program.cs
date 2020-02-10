@@ -40,7 +40,7 @@ namespace SE_assignment
             Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
 
             //Test Data 2
-            Customer cust2 = new Customer(1, "Diego", "Ngee Ann Poly", "avin@np.com", 91234567);
+            Customer cust2 = new Customer(2, "Diego", "Ngee Ann Poly", "avin@np.com", 91234567);
             Dispatcher disp2 = new Dispatcher("Ali", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList2 = new List<OrderLine>();
 
@@ -53,8 +53,8 @@ namespace SE_assignment
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
             Order b = new Order(2, "Preparing", DateTime.Now, "Cash", cust2, orderLineList2);
-            Order c = new Order(3, "Ready", DateTime.Now, "Cash", cust2, orderLineList2);
-            Order d = new Order(4, "Dispatched", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order c = new Order(3, "Ready", DateTime.Now, "Cash", cust1, orderLineList2);
+            Order d = new Order(4, "Dispatched", DateTime.Now, "Cash", cust1, orderLineList2);
             Order e = new Order(5, "Delivered", DateTime.Now, "Cash", cust2, orderLineList2);
             Order f = new Order(6, "Cancelled", DateTime.Now, "Cash", cust2, orderLineList2);
 
@@ -107,7 +107,7 @@ namespace SE_assignment
             //View Current and past orders
             else if (option == "B")
             {
-
+                c.custViewOrder(c);
             }
             else
             {
@@ -173,7 +173,7 @@ namespace SE_assignment
             //View orders using various filters such as new, cancelled, delivered, etc
             else if (option == "2")
             {
-                Order.managerViewOrder();
+                Manager.managerViewOrder();
 
             }
             else
