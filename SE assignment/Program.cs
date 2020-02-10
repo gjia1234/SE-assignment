@@ -42,10 +42,14 @@ namespace SE_assignment
             FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1);
             OrderLine ol4 = new OrderLine(2, m2);
 
-
+            //new, preparing, ready, dispatched, delivered, cancelled
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
-            Order b = new Order(2, "New", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order b = new Order(2, "Preparing", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order c = new Order(3, "Ready", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order d = new Order(4, "Dispatched", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order e = new Order(5, "Delivered", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order f = new Order(6, "Cancelled", DateTime.Now, "Cash", cust2, orderLineList2);
 
             Globals.MenuList.Add(m1);
             Globals.MenuList.Add(m2);
@@ -54,28 +58,34 @@ namespace SE_assignment
             Globals.CustomerList.Add(cust1);
             Globals.OrderList.Add(a);
             Globals.OrderList.Add(b);
-            //Globals.MenuList.Add(sm1);
-            //Globals.MenuList.Add(sm2);
+            Globals.OrderList.Add(c);
+            Globals.OrderList.Add(d);
+            Globals.OrderList.Add(e);
+            Globals.OrderList.Add(f);
 
             //Message
-            Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
-            string role = Console.ReadLine();
-            if (role == "1")
+            while (true)
             {
-                customerProcess(cust1);
-            }
-            else if (role == "2")
-            {
-                managerProcess();
-            }
-            else if (role == "3")
-            {
-                Chef chef = new Chef("Darren", 1, "S101010G", "MTF", 12345678, DateTime.Now, "Gay");
-                chefProcess(chef);
-            }
-            else {
-                Console.WriteLine("Option does not exist! Try again!");
-                Main(args);
+                Console.Write("\nWhat is your role? \n[1]Customer\n[2]Manager\n[3]Chef\nInput Option:");
+                string role = Console.ReadLine();
+                if (role == "1")
+                {
+                    customerProcess(cust1);
+                }
+                else if (role == "2")
+                {
+                    managerProcess();
+                }
+                else if (role == "3")
+                {
+                    Chef chef = new Chef("Darren", 1, "S101010G", "MTF", 12345678, DateTime.Now, "Gay");
+                    chefProcess(chef);
+                }
+                else
+                {
+                    Console.WriteLine("Option does not exist! Try again!");
+                    Main(args);
+                }
             }
         }
 
