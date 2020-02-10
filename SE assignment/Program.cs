@@ -49,9 +49,14 @@ namespace SE_assignment
             Menu m4 = new Menu(1, "Pasta", "Tasty Chicken ", 12, 1, "Available");
             OrderLine ol4 = new OrderLine(2, m2);
 
+            //new, preparing, ready, dispatched, delivered, cancelled
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
-            Order b = new Order(2, "New", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order b = new Order(2, "Preparing", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order c = new Order(3, "Ready", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order d = new Order(4, "Dispatched", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order e = new Order(5, "Delivered", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order f = new Order(6, "Cancelled", DateTime.Now, "Cash", cust2, orderLineList2);
 
             Globals.MenuList.Add(m1);
             Globals.MenuList.Add(m2);
@@ -60,6 +65,10 @@ namespace SE_assignment
             Globals.CustomerList.Add(cust1);
             Globals.OrderList.Add(a);
             Globals.OrderList.Add(b);
+            Globals.OrderList.Add(c);
+            Globals.OrderList.Add(d);
+            Globals.OrderList.Add(e);
+            Globals.OrderList.Add(f);
 
 
             //Message
