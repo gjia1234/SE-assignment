@@ -16,15 +16,16 @@ namespace SE_assignment
             get { return unit > 0; }
         }
         public List<FoodItem> foodItemList { get; set; }
+        public int prepTime { get; set; }
 
-
-        public Menu(int ID, string Name, string Description, float Price, int Unit)
+        public Menu(int ID, string Name, string Description, float Price, int Unit, int PrepTime)
         {
             id = ID;
             name = Name;
             description = Description;
             price = Price;
             unit = Unit;
+            prepTime = PrepTime;
         }
 
     }
