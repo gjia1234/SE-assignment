@@ -126,9 +126,27 @@ namespace SE_assignment
                     }
                 }
 
+            }
+
+            //Remove item from list and update the other details
+            if(updatingOptions == "2")
+            {
+                foreach (Menu m in Globals.MenuList) {
+                    if (m is SetMeal)
+                    {
+                        
+                    }
+                }
+            }
+
+            //Add item into list and update other details
+            if (updatingOptions == "3")
+            {
 
             }
 
+
+            //Keep the list same and only change other details
             if (updatingOptions == "4")
             {
                 foreach (SetMeal m in Globals.MenuList)
@@ -207,9 +225,12 @@ namespace SE_assignment
             string addItemPrice = Console.ReadLine();
             Console.Write("Quantity: ");
             string addItemQty = Console.ReadLine();
+            Console.Write("Preparation Time: ");
+            string addItemTime = Console.ReadLine();
 
             int id = Globals.MenuList.Count + 1;
-            FoodItem newitem = new FoodItem(id, addItemName, addItemDesc, float.Parse(addItemPrice), int.Parse(addItemQty));
+            FoodItem newitem = new FoodItem(id, addItemName, addItemDesc, float.Parse(addItemPrice), int.Parse(addItemQty), int.Parse(addItemTime));
+            Globals.MenuList.Add(newitem);
             Console.WriteLine("\nItem added successfully!");
             foreach (Menu m in Globals.MenuList)
             {
@@ -230,9 +251,19 @@ namespace SE_assignment
             Console.Write("Name: ");
             string addSetName = Console.ReadLine();
             List<FoodItem> newFooditemlist = new List<FoodItem>();
+
+            Console.WriteLine("\nItems Available to add");
             while (true)
             {
+                foreach (Menu m in Globals.MenuList)
+                {
+                    if (m is FoodItem)
+                    {
+                        
+                        Console.WriteLine("Item Name: " + m.name);
+                    }
 
+                }
                 Console.Write("What item do you want to add:");
                 string item = Console.ReadLine();
                 foreach(Menu m in Globals.MenuList)
@@ -263,9 +294,11 @@ namespace SE_assignment
             string addSetQty = Console.ReadLine();
             Console.Write("Size: ");
             string addSetSize = Console.ReadLine();
+            Console.Write("Preparation Time: ");
+            string addSetTime = Console.ReadLine();
 
             int id = Globals.MenuList.Count + 1;
-            SetMeal newSet = new SetMeal(id, addSetName, newFooditemlist, addSetDesc, float.Parse(addSetPrice), int.Parse(addSetQty), int.Parse(addSetSize));
+            SetMeal newSet = new SetMeal(id, addSetName, newFooditemlist, addSetDesc, float.Parse(addSetPrice), int.Parse(addSetQty), int.Parse(addSetSize), int.Parse(addSetTime));
             Globals.MenuList.Add(newSet);
             Console.WriteLine("\nSet meal added successfully!");
             foreach (Menu m in Globals.MenuList)
@@ -343,6 +376,18 @@ namespace SE_assignment
             Globals.MenuList.RemoveAt(count);
             Console.WriteLine("Delete Succesful!");
 
+            foreach (Menu m in Globals.MenuList)
+            {
+                if (m is SetMeal)
+                {
+                    Console.WriteLine("Set Meal Name: " + m.name);
+                }
+
+            }
+            Console.ReadLine();
+
+        }
+
         public static void managerViewOrder()
         {
             Console.WriteLine("All Orders:");
@@ -352,19 +397,10 @@ namespace SE_assignment
             }
             Console.WriteLine("[1]View All\n[2]New\n[3]Preparing\n[4]Ready\n[5]Dispatched\n[6]Delivered\n[7]Cancelled\nEnter your filter:");
 
-            foreach (Menu m in Globals.MenuList)
-            {
-                if (m is SetMeal)
-                {
-                    Console.WriteLine("Set Meal Name: " + m.name);
-                }
-                
-            }
-            Console.ReadLine();
-        }
-            //new, preparing, ready, dispatched, delivered, cancelled
-            string filter = Console.ReadLine();
-            List<Order> filtered = new List<Order>();
+        
+        //new, preparing, ready, dispatched, delivered, cancelled
+        string filter = Console.ReadLine();
+        List<Order> filtered = new List<Order>();
             if (filter == "1")
             {
                 Console.WriteLine("Selected filter: View All");
@@ -372,7 +408,7 @@ namespace SE_assignment
                 {
                     filtered.Add(o);
                 }
-            }
+}
             else if (filter == "2")
             {
                 Console.WriteLine("Selected filter: New");
@@ -465,6 +501,9 @@ namespace SE_assignment
         }
 
     }
+
+
+
     
 }
 
