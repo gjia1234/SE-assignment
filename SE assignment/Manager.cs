@@ -398,9 +398,9 @@ namespace SE_assignment
             Console.WriteLine("[1]View All\n[2]New\n[3]Preparing\n[4]Ready\n[5]Dispatched\n[6]Delivered\n[7]Cancelled\nEnter your filter:");
 
         
-        //new, preparing, ready, dispatched, delivered, cancelled
-        string filter = Console.ReadLine();
-        List<Order> filtered = new List<Order>();
+            //new, preparing, ready, dispatched, delivered, cancelled
+            string filter = Console.ReadLine();
+            List<Order> filtered = new List<Order>();
             if (filter == "1")
             {
                 Console.WriteLine("Selected filter: View All");
@@ -492,7 +492,7 @@ namespace SE_assignment
                     Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Order Created Time:" + o.createDateTime + ", Customer ID:" + o.cust.accountNo + ", Customer Name:" + o.cust.name);
                     foreach (OrderLine ol in o.orderlineList)
                     {
-                        Console.WriteLine("Food Name:" + ol.menu.name + ", Quantity:" + ol.menu.unit);
+                        Console.WriteLine("Food Name:" + ol.menu.name + ", Quantity:" + ol.qty);
                     }
                     Console.WriteLine();
                 }

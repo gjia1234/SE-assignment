@@ -17,7 +17,6 @@ namespace SE_assignment
             List<OrderLine> orderLineList1 = new List<OrderLine>();
             List<SetMeal> setMealList1 = new List<SetMeal>();
             List<FoodItem> foodItemList1 = new List<FoodItem>();
-
             FoodItem m1 = new FoodItem(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, 10);
             OrderLine ol1 = new OrderLine(1, m1);
             FoodItem m2 = new FoodItem(1, "Whole Chicken", "Tasty Chicken ", 12, 1, 15);
@@ -25,7 +24,7 @@ namespace SE_assignment
 
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
-            
+
             Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
 
             //Test Data 2
@@ -93,7 +92,6 @@ namespace SE_assignment
                 else
                 {
                     Console.WriteLine("Option does not exist! Try again!");
-                    Main(args);
                 }
             }
         }
