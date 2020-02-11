@@ -14,7 +14,7 @@ namespace SE_assignment
         public int hpno { get; set; }
         public List<Order> OrderList = new List<Order>();
 
-    //customer constructor
+        //customer constructor
         public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
         {
             accountNo = AccountNo;
@@ -34,6 +34,13 @@ namespace SE_assignment
             DateTime time = DateTime.Now;
             List<OrderLine> orderlines = new List<OrderLine>();
             while (true){
+                foreach (Menu m in Globals.MenuList)
+                {
+                    if (m is FoodItem)
+                    {
+                        Console.WriteLine("Item Name: " + m.name + ", Price: $" + m.price + ", Preperation Time: "+m.prepTime+"min");
+                    }
+                }
                 Console.Write("What item do you want to order: ");
                 String Item = Console.ReadLine();
                 int counter = 0;
