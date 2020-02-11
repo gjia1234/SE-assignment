@@ -194,7 +194,7 @@ namespace SE_assignment
                 {
                     if (o.status == "New")
                     {
-                        Options += o.orderNo + "\n";
+                        Options += "Order No." + o.orderNo + "\n";
                     }
                 }
                 Options += "Input order you wish to prepare: ";

@@ -18,7 +18,7 @@ namespace SE_assignment
             o.status = "Ready";
             o.timeReady = DateTime.Now;
             Console.WriteLine("Order is done.");
-            Console.WriteLine("Press enter again to close you arsehole.");
+            Console.WriteLine("Press enter again to close.");
             Console.ReadLine();
         }
 
