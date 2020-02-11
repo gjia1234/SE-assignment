@@ -408,114 +408,125 @@ namespace SE_assignment
 
         public static void managerViewOrder()
         {
-            Console.WriteLine("All Orders:");
-            foreach (Order o in Globals.OrderList)
+            while (true)
             {
-                Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Customer Name:" + o.cust.name + "\n");
-            }
-            Console.WriteLine("[1]View All\n[2]New\n[3]Preparing\n[4]Ready\n[5]Dispatched\n[6]Delivered\n[7]Cancelled\nEnter your filter:");
+                Console.WriteLine("All Orders:");
 
-        
-            //new, preparing, ready, dispatched, delivered, cancelled
-            string filter = Console.ReadLine();
-            List<Order> filtered = new List<Order>();
-            if (filter == "1")
-            {
-                Console.WriteLine("Selected filter: View All");
-                foreach (Order o in Globals.OrderList)
+                if (Globals.OrderList.Count > 0)
                 {
-                    filtered.Add(o);
-                }
-}
-            else if (filter == "2")
-            {
-                Console.WriteLine("Selected filter: New");
-                foreach (Order o in Globals.OrderList)
-                {
-                    if (o.status == "New")
+                    foreach (Order o in Globals.OrderList)
                     {
-                        filtered.Add(o);
+                        Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Customer Name:" + o.cust.name + "\n");
                     }
                 }
-            }
-            else if (filter == "3")
-            {
-                Console.WriteLine("Selected filter: Preparing");
-                foreach (Order o in Globals.OrderList)
+                else
                 {
-                    if (o.status == "Preparing")
-                    {
-                        filtered.Add(o);
-                    }
+                    Console.WriteLine("There are no orders.");
+                    break;
                 }
-            }
-            else if (filter == "4")
-            {
-                Console.WriteLine("Selected filter: Ready");
-                foreach (Order o in Globals.OrderList)
-                {
-                    if (o.status == "Ready")
-                    {
-                        filtered.Add(o);
-                    }
-                }
-            }
-            else if (filter == "5")
-            {
-                Console.WriteLine("Selected filter: Dispatched");
-                foreach (Order o in Globals.OrderList)
-                {
-                    if (o.status == "Dispatched")
-                    {
-                        filtered.Add(o);
-                    }
-                }
-            }
-            else if (filter == "6")
-            {
-                Console.WriteLine("Selected filter: Delivered");
-                foreach (Order o in Globals.OrderList)
-                {
-                    if (o.status == "Delivered")
-                    {
-                        filtered.Add(o);
-                    }
-                }
-            }
-            else if (filter == "7")
-            {
-                Console.WriteLine("Selected filter: Cancelled");
-                foreach (Order o in Globals.OrderList)
-                {
-                    if (o.status == "Cancelled")
-                    {
-                        filtered.Add(o);
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid filter. Please Try again\n\n");
-            }
-            int c = filtered.Count;
-            if (c == 0)
-            {
-                Console.WriteLine("There are no items in your filter. Please Try again\n\n");
-                managerViewOrder();
-            }
-            else
-            {
-                foreach (Order o in filtered)
-                {
-                    Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Order Created Time:" + o.createDateTime + ", Customer ID:" + o.cust.accountNo + ", Customer Name:" + o.cust.name);
-                    foreach (OrderLine ol in o.orderlineList)
-                    {
-                        Console.WriteLine("Food Name:" + ol.menu.name + ", Quantity:" + ol.qty);
-                    }
-                    Console.WriteLine();
-                }
-            }
+                Console.WriteLine("[1]View All\n[2]New\n[3]Preparing\n[4]Ready\n[5]Dispatched\n[6]Delivered\n[7]Cancelled\nEnter your filter:");
 
+
+                //new, preparing, ready, dispatched, delivered, cancelled
+                string filter = Console.ReadLine();
+                List<Order> filtered = new List<Order>();
+                if (filter == "1")
+                {
+                    Console.WriteLine("Selected filter: View All");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        filtered.Add(o);
+                    }
+                }
+                else if (filter == "2")
+                {
+                    Console.WriteLine("Selected filter: New");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        if (o.status == "New")
+                        {
+                            filtered.Add(o);
+                        }
+                    }
+                }
+                else if (filter == "3")
+                {
+                    Console.WriteLine("Selected filter: Preparing");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        if (o.status == "Preparing")
+                        {
+                            filtered.Add(o);
+                        }
+                    }
+                }
+                else if (filter == "4")
+                {
+                    Console.WriteLine("Selected filter: Ready");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        if (o.status == "Ready")
+                        {
+                            filtered.Add(o);
+                        }
+                    }
+                }
+                else if (filter == "5")
+                {
+                    Console.WriteLine("Selected filter: Dispatched");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        if (o.status == "Dispatched")
+                        {
+                            filtered.Add(o);
+                        }
+                    }
+                }
+                else if (filter == "6")
+                {
+                    Console.WriteLine("Selected filter: Delivered");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        if (o.status == "Delivered")
+                        {
+                            filtered.Add(o);
+                        }
+                    }
+                }
+                else if (filter == "7")
+                {
+                    Console.WriteLine("Selected filter: Cancelled");
+                    foreach (Order o in Globals.OrderList)
+                    {
+                        if (o.status == "Cancelled")
+                        {
+                            filtered.Add(o);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid filter. Please Try again\n\n");
+                }
+                int c = filtered.Count;
+                if (c == 0)
+                {
+                    Console.WriteLine("There are no items in your filter. Please Try again\n\n");
+                    managerViewOrder();
+                }
+                else
+                {
+                    foreach (Order o in filtered)
+                    {
+                        Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Order Created Time:" + o.createDateTime + ", Customer ID:" + o.cust.accountNo + ", Customer Name:" + o.cust.name);
+                        foreach (OrderLine ol in o.orderlineList)
+                        {
+                            Console.WriteLine("Food Name:" + ol.menu.name + ", Quantity:" + ol.qty);
+                        }
+                    }
+                }
+                break;
+            }
         }
 
     }
