@@ -410,10 +410,10 @@ namespace SE_assignment
         {
             while (true)
             {
-                Console.WriteLine("All Orders:");
-
+                
                 if (Globals.OrderList.Count > 0)
                 {
+                    Console.WriteLine("All Orders:");
                     foreach (Order o in Globals.OrderList)
                     {
                         Console.WriteLine("Order No:" + o.orderNo + ", Status:" + o.status + ", Payment Method:" + o.paymentMethod + ", Customer Name:" + o.cust.name + "\n");
