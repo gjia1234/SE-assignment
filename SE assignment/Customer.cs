@@ -14,7 +14,7 @@ namespace SE_assignment
         public int hpno { get; set; }
         public List<Order> OrderList = new List<Order>();
 
-    //customer constructor
+        //customer constructor
         public Customer(int AccountNo, string Name, string Address, string Email, int HPno)
         {
             accountNo = AccountNo;
