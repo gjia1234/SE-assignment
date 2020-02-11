@@ -27,9 +27,9 @@ namespace SE_assignment
         public void CreateOrder()
         {
             int OrderNo =1;
-            if (OrderList != null)
+            if (Globals.OrderList != null)
             {
-                OrderNo = Globals.OrderList.Count;
+                OrderNo = Globals.OrderList.Count +1;
             }
             DateTime time = DateTime.Now;
             List<OrderLine> orderlines = new List<OrderLine>();
@@ -82,12 +82,62 @@ namespace SE_assignment
                 }
                 Console.WriteLine("Please choose a valid option.");
             }
-            Order newOrder = new Order(OrderNo, "new",time,PaymentMethod, this, orderlines);
+            Order newOrder = new Order(OrderNo, "New",time,PaymentMethod, this, orderlines);
             float price = newOrder.subtotal();
             Console.WriteLine("You have paid $" + price.ToString("0.00") + " via " + PaymentMethod);
             OrderList.Add(newOrder);
             Globals.OrderList.Add(newOrder);
             Console.ReadLine();
         }
+
+        public void custViewOrder(Customer c)
+        {
+            Console.WriteLine("All Orders you created:");
+            List<Order> filtered = new List<Order>();
+            List<Order> history = new List<Order>();
+            List<Order> current = new List<Order>();
+            foreach (Order o in Globals.OrderList)
+            {
+                if (o.cust.accountNo == c.accountNo) {
+                    filtered.Add(o);
+                }
+            }
+            foreach (Order ord in filtered)
+            {
+                if (ord.status == "Delivered" || ord.status == "Cancelled")
+                {
+                    history.Add(ord);
+                }
+                else {
+                    current.Add(ord);
+                }
+            }
+            Console.WriteLine("Past Orders:");
+            int counthList = history.Count;
+            int countpList = current.Count;
+            if (counthList == 0) {
+                Console.WriteLine("Nothing Here!");
+            }
+            else
+            {
+                foreach (Order h in history)
+                {
+                    Console.WriteLine("Order No:" + h.orderNo + ", Status:" + h.status + ", Payment Method:" + h.paymentMethod + ", Order Created Time:" + h.createDateTime + ", Customer ID:" + h.cust.accountNo + ", Customer Name:" + h.cust.name);
+                }
+            }
+            Console.WriteLine("Current Orders:");
+            if (countpList == 0)
+            {
+                Console.WriteLine("Nothing Here!");
+            }
+            else
+            {
+                foreach (Order p in current)
+                {
+                    Console.WriteLine("Order No:" + p.orderNo + ", Status:" + p.status + ", Payment Method:" + p.paymentMethod + ", Order Created Time:" + p.createDateTime + ", Customer ID:" + p.cust.accountNo + ", Customer Name:" + p.cust.name);
+                }
+            }
+        }
     }
+
 }
