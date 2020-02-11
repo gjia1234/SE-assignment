@@ -34,6 +34,13 @@ namespace SE_assignment
             DateTime time = DateTime.Now;
             List<OrderLine> orderlines = new List<OrderLine>();
             while (true){
+                foreach (Menu m in Globals.MenuList)
+                {
+                    if (m is FoodItem)
+                    {
+                        Console.WriteLine("Item Name: " + m.name + ", Price: $" + m.price + ", Preperation Time: "+m.prepTime+"min");
+                    }
+                }
                 Console.Write("What item do you want to order: ");
                 String Item = Console.ReadLine();
                 int counter = 0;
