@@ -34,6 +34,7 @@ namespace SE_assignment
                     Console.WriteLine("Description: " + m.description);
                     Console.WriteLine("Price: " + m.price);
                     Console.WriteLine("Quantity: " + m.unit);
+                    Console.WriteLine("Preparation Time: " + m.prepTime);
 
                     Console.WriteLine("\nUpdate item Info:");
                     Console.WriteLine("Input 'Same' if you want to keep the old information");
@@ -45,6 +46,9 @@ namespace SE_assignment
                     string newprice = Console.ReadLine();
                     Console.Write("New Quantity: ");
                     string newQty = Console.ReadLine();
+                    Console.Write("New Preparation Time: ");
+                    string newTime = Console.ReadLine();
+
                     if (newname.ToUpper() != "SAME")
                     {
                         m.name = newname;
@@ -62,6 +66,10 @@ namespace SE_assignment
                     {
                         m.unit = int.Parse(newQty);
                     }
+                    if (newTime.ToUpper() != "SAME")
+                    {
+                        m.prepTime = int.Parse(newTime);
+                    }
 
                     Console.WriteLine("\nUpdate Successful!");
                     Console.WriteLine("Updated Information");
@@ -69,6 +77,7 @@ namespace SE_assignment
                     Console.WriteLine("Description: " + m.description);
                     Console.WriteLine("Price: " + m.price);
                     Console.WriteLine("Quantity: " + m.unit);
+                    Console.WriteLine("Preparation Time: " + m.prepTime);
 
                     break;
                 }
@@ -78,11 +87,13 @@ namespace SE_assignment
         //Update Set Meal
         public static void ManagerUpdateSetMeal()
         {
-            Console.Write("Which meal do you want to update?");
+            SetMeal updateMeal = new SetMeal();
+            Console.WriteLine("Which meal do you want to update?");
             foreach (Menu m in Globals.MenuList)
             {
                 if (m is SetMeal)
                 {
+                    updateMeal = m as SetMeal;
                     Console.WriteLine("Name: " + m.name);
                 }
             }
@@ -91,18 +102,30 @@ namespace SE_assignment
             String name = Console.ReadLine();
 
             Console.WriteLine("How would you like to update the Items in the Set Meal?");
-            Console.WriteLine("[1]Create new list");
+            Console.WriteLine("[1]Add Item to list");
             Console.WriteLine("[2]Remove Item from list");
-            Console.WriteLine("[3]Add Item to list");
-            Console.WriteLine("[4]Keep the List the same");
-
+            Console.WriteLine("[3]Keep the List the same");
+                        
             string updatingOptions = Console.ReadLine();
-            if (updatingOptions == "1")
+            
+            //Add item from list and update the other details
+            if(updatingOptions == "1")
             {
-                List<FoodItem> newFooditemlist = new List<FoodItem>();
+                //Console.WriteLine("Add food item details");
+                //Console.WriteLine("\nItems Available to add");
+                //string addSetName = Console.ReadLine();
+                List<FoodItem> newItemList = new List<FoodItem>();
                 while (true)
                 {
+                    foreach (Menu m in Globals.MenuList)
+                    {
+                        if (m is FoodItem)
+                        {
 
+                            Console.WriteLine("Item Name: " + m.name);
+                        }
+
+                    }
                     Console.Write("What item do you want to add:");
                     string item = Console.ReadLine();
                     foreach (Menu m in Globals.MenuList)
@@ -112,7 +135,7 @@ namespace SE_assignment
                             if (m.name.ToUpper() == item.ToUpper())
                             {
                                 FoodItem newitem = m as FoodItem;
-                                newFooditemlist.Add(newitem);
+                                newItemList.Add(newitem);
                                 Console.WriteLine("Item added successfully");
                                 break;
                             }
@@ -120,93 +143,88 @@ namespace SE_assignment
                     }
                     Console.Write("Do you want to add another item? (YES/NO): ");
                     string choice = Console.ReadLine();
+
                     if (choice.ToUpper() == "NO")
                     {
                         break;
                     }
+
+                    
                 }
+                
+                foreach (SetMeal m in Globals.MenuList)
+                {
+                    Console.WriteLine("Name: " + m.name);
+                    Console.WriteLine("Description: " + m.description);
+                    Console.WriteLine("Price: " + m.price);
+                    Console.WriteLine("Quantity: " + m.unit);
+                    Console.WriteLine("Size: " + m.size);
+                    Console.WriteLine("Preparation Time: " + m.prepTime);
 
-            }
+                    Console.WriteLine("\nUpdate item Info:");
+                    Console.WriteLine("Input 'Same' if you want to keep the old information");
+                    Console.Write("New Name: ");
+                    string newSetname = Console.ReadLine();
+                    Console.Write("New Description: ");
+                    string newSetdesc = Console.ReadLine();
+                    Console.Write("New Price: ");
+                    string newSetprice = Console.ReadLine();
+                    Console.Write("New Quantity: ");
+                    string newSetQty = Console.ReadLine();
+                    Console.Write("New Size: ");
+                    string newSetSize = Console.ReadLine();
+                    Console.Write("New Prep Time: ");
+                    string newTime = Console.ReadLine();
 
-            //Remove item from list and update the other details
-            if(updatingOptions == "2")
-            {
-                foreach (Menu m in Globals.MenuList) {
-                    if (m is SetMeal)
+                    if (newSetname.ToUpper() != "SAME")
                     {
-                        
+                        m.name = newSetname;
                     }
+
+                    if (newSetdesc.ToUpper() != "SAME")
+                    {
+                        m.description = newSetdesc;
+                    }
+                    if (newSetprice.ToUpper() != "SAME")
+                    {
+                        m.price = float.Parse(newSetprice);
+                    }
+                    if (newSetQty.ToUpper() != "SAME")
+                    {
+                        m.unit = int.Parse(newSetQty);
+                    }
+                    if (newSetSize.ToUpper() != "SAME")
+                    {
+                        m.size = int.Parse(newSetSize);
+                    }
+                    if (newTime.ToUpper() != "SAME")
+                    {
+                        m.prepTime = int.Parse(newTime);
+                    }
+                    
+                    Console.WriteLine("Update Successful!");
+                    Console.WriteLine("\nUpdated Information");
+                    Console.WriteLine("Name: " + m.name);
+                    Console.WriteLine("Description: " + m.description);
+                    Console.WriteLine("Price: " + m.price);
+                    Console.WriteLine("Quantity: " + m.unit);
+                    Console.WriteLine("Size: " + m.size);
+                    Console.WriteLine("Preparation Time: " + m.prepTime);
+                    break;
                 }
             }
 
-            //Add item into list and update other details
-            if (updatingOptions == "3")
+            //Remove item into list and update other details
+            if (updatingOptions == "2")
             {
 
             }
 
 
             //Keep the list same and only change other details
-            if (updatingOptions == "4")
+            if (updatingOptions == "3")
             {
-                foreach (SetMeal m in Globals.MenuList)
-                {
-                    if (name.ToUpper() == m.name.ToUpper())
-                    {
-                        Console.WriteLine("Name: " + m.name);
-                        Console.WriteLine("Description: " + m.description);
-                        Console.WriteLine("Price: " + m.price);
-                        Console.WriteLine("Quantity: " + m.unit);
-                        Console.WriteLine("Size: " + m.size);
-
-                        Console.WriteLine("\nUpdate item Info:");
-                        Console.WriteLine("Input 'Same' if you want to keep the old information");
-                        Console.Write("New Name: ");
-                        string newSetname = Console.ReadLine();
-                        Console.Write("New Description: ");
-                        string newSetdesc = Console.ReadLine();
-                        Console.Write("New Price: ");
-                        string newSetprice = Console.ReadLine();
-                        Console.Write("New Quantity: ");
-                        string newSetQty = Console.ReadLine();
-                        Console.Write("New Size: ");
-                        string newSetSize = Console.ReadLine();
-
-                        if (newSetname.ToUpper() != "SAME")
-                        {
-                            m.name = newSetname;
-                        }
-
-                        if (newSetdesc.ToUpper() != "SAME")
-                        {
-                            m.description = newSetdesc;
-                        }
-                        if (newSetprice.ToUpper() != "SAME")
-                        {
-                            m.price = float.Parse(newSetprice);
-                        }
-                        if (newSetQty.ToUpper() != "SAME")
-                        {
-                            m.unit = int.Parse(newSetQty);
-                        }
-                        if (newSetSize.ToUpper() != "SAME")
-                        {
-                            m.size = int.Parse(newSetSize);
-                        }
-
-
-                        Console.WriteLine("Update Successful!");
-                        Console.WriteLine("\nUpdated Information");
-                        Console.WriteLine("Name: " + m.name);
-                        Console.WriteLine("Description: " + m.description);
-                        Console.WriteLine("Price: " + m.price);
-                        Console.WriteLine("Quantity: " + m.unit);
-                        Console.WriteLine("Size: " + m.size);
-
-                        break;
-
-                    }
-                }
+                
             }
 
            

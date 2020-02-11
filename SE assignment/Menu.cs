@@ -18,6 +18,8 @@ namespace SE_assignment
         public List<FoodItem> foodItemList { get; set; }
         public int prepTime { get; set; }
 
+        public Menu() { }
+
         public Menu(int ID, string Name, string Description, float Price, int Unit, int PrepTime)
         {
             id = ID;

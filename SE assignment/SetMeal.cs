@@ -9,6 +9,11 @@ namespace SE_assignment
         public int size { get; set; }
         public List<FoodItem> FoodItemList = new List<FoodItem>();
 
+        public SetMeal() : base()
+        {
+
+        }
+
         public SetMeal(int ID, string Name,List<FoodItem> fooditemlist, string Description, float Price, int Unit, int Size, int PrepTime) : base(ID, Name, Description, Price, Unit, PrepTime)
         {
             size = Size;
