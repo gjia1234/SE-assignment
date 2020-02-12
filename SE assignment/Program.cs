@@ -8,7 +8,7 @@ namespace SE_assignment
 
         static void Main(string[] args)
         {
-            Console.Title = "Food Ordering System";
+            Console.Title = "FHungryEatNow Food Ordering System";
             //Test Data for Order
             //Test Data 1
 
