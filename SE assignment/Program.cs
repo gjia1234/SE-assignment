@@ -53,11 +53,11 @@ namespace SE_assignment
             //new, preparing, ready, dispatched, delivered, cancelled
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
-            Order b = new Order(2, "Preparing", DateTime.Now, "Cash", cust2, orderLineList2);
-            Order c = new Order(3, "Ready", DateTime.Now, "Cash", cust1, orderLineList2);
-            Order d = new Order(4, "Dispatched", DateTime.Now, "Cash", cust1, orderLineList2);
-            Order e = new Order(5, "Delivered", DateTime.Now, "Cash", cust2, orderLineList2);
-            Order f = new Order(6, "Cancelled", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order b = new Order(2, "Preparing", new DateTime(2017, 1, 18, 12, 20, 3), "Cash", cust2, orderLineList2);
+            Order c = new Order(3, "Ready", new DateTime(2018, 1, 20, 10, 27, 3), "Cash", cust1, orderLineList2);
+            Order d = new Order(4, "Dispatched", new DateTime(2019, 6, 23, 2, 32, 3), "Cash", cust1, orderLineList2);
+            Order e = new Order(5, "Delivered", new DateTime(2019, 6, 16, 12, 54, 3), "Cash", cust2, orderLineList2);
+            Order f = new Order(6, "Cancelled", new DateTime(2019, 5, 24, 12, 12, 3), "Cash", cust2, orderLineList2);
 
             Globals.MenuList.Add(m1);
             Globals.MenuList.Add(m2);
