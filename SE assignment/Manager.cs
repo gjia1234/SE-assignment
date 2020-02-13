@@ -216,8 +216,16 @@ namespace SE_assignment
 
             //Remove item from list and update other details
             if (updatingOptions == "2")
-            {
-
+            {                
+                foreach (Menu m in Globals.MenuList)
+                {
+                    if (m is SetMeal)
+                    {
+                        Console.WriteLine("Current List items: " + m.foodItemList);
+                    }
+                }
+                Console.WriteLine("Please input item to remove: ");
+                string item = Console.ReadLine();                
             }
 
 
