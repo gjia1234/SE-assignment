@@ -8,7 +8,7 @@ namespace SE_assignment
 
         static void Main(string[] args)
         {
-            Console.Title = "Food Ordering System";
+            Console.Title = "FHungryEatNow Food Ordering System";
             //Test Data for Order
             //Test Data 1
 
@@ -17,18 +17,13 @@ namespace SE_assignment
             List<OrderLine> orderLineList1 = new List<OrderLine>();
             List<SetMeal> setMealList1 = new List<SetMeal>();
             List<FoodItem> foodItemList1 = new List<FoodItem>();
-
-            FoodItem m1 = new FoodItem(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1);
+            FoodItem m1 = new FoodItem(1, "Chicken Nugget", "Tasty Chicken Nugget", 12, 1, 10);
             OrderLine ol1 = new OrderLine(1, m1);
-            FoodItem m2 = new FoodItem(1, "Whole Chicken", "Tasty Chicken ", 12, 1);
+            FoodItem m2 = new FoodItem(1, "Whole Chicken", "Tasty Chicken ", 12, 1, 15);
             OrderLine ol2 = new OrderLine(2, m2);
-
-            //SetMeal sm1 = new SetMeal(1, "Chicken Nugget Meal", "Comes with tasty fries, 6pc nuggets", 20, 1, 2);
-           // SetMeal sm2 = new SetMeal(2, "Spring Chicken Meal", "Comes with Whole Fried Chicken and fries", 25, 1, 4);
 
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
-            
 
             Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
 
@@ -37,20 +32,20 @@ namespace SE_assignment
             Dispatcher disp2 = new Dispatcher("Ali", 1, "S9912313C", "Male", 97654321, DateTime.Now, "new");
             List<OrderLine> orderLineList2 = new List<OrderLine>();
 
-            FoodItem m3 = new FoodItem(1, "Chicken Burger", "Tasty Chicken Patty", 12, 1);
+            FoodItem m3 = new FoodItem(1, "Chicken Burger", "Tasty Chicken Patty", 12, 1, 10);
             OrderLine ol3 = new OrderLine(1, m1);
-            FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1);
+            FoodItem m4 = new FoodItem(1, "Pasta", "Tasty Chicken ", 12, 1, 8);
             OrderLine ol4 = new OrderLine(2, m2);
 
             List<FoodItem> s1list = new List<FoodItem>();
             s1list.Add(m3);
             s1list.Add(m4);
-            SetMeal s1 = new SetMeal(10, "Pasta and Burger Meal", s1list, "Great meal with both a chicken burger and pasta", 20, 300, 2);
+            SetMeal s1 = new SetMeal(10, "Pasta and Burger Meal", s1list, "Great meal with both a chicken burger and pasta", 20, 300, 2, 15);
 
             List<FoodItem> s2list = new List<FoodItem>();
             s2list.Add(m1);
             s2list.Add(m2);
-            SetMeal s2 = new SetMeal(20, "Nugget and Whole Chicken Meal", s2list, "Get best of both chickens", 30, 200, 4);
+            SetMeal s2 = new SetMeal(20, "Nugget and Whole Chicken Meal", s2list, "Get best of both chickens", 30, 200, 4, 20);
 
             Globals.MenuList.Add(s1);
             Globals.MenuList.Add(s2);
@@ -58,11 +53,11 @@ namespace SE_assignment
             //new, preparing, ready, dispatched, delivered, cancelled
             orderLineList2.Add(ol1);
             orderLineList2.Add(ol2);
-            Order b = new Order(2, "Preparing", DateTime.Now, "Cash", cust2, orderLineList2);
-            Order c = new Order(3, "Ready", DateTime.Now, "Cash", cust1, orderLineList2);
-            Order d = new Order(4, "Dispatched", DateTime.Now, "Cash", cust1, orderLineList2);
-            Order e = new Order(5, "Delivered", DateTime.Now, "Cash", cust2, orderLineList2);
-            Order f = new Order(6, "Cancelled", DateTime.Now, "Cash", cust2, orderLineList2);
+            Order b = new Order(2, "Preparing", new DateTime(2017, 1, 18, 12, 20, 3), "Cash", cust2, orderLineList2);
+            Order c = new Order(3, "Ready", new DateTime(2018, 1, 20, 10, 27, 3), "Cash", cust1, orderLineList2);
+            Order d = new Order(4, "Dispatched", new DateTime(2019, 6, 23, 2, 32, 3), "Cash", cust1, orderLineList2);
+            Order e = new Order(5, "Delivered", new DateTime(2019, 6, 16, 12, 54, 3), "Cash", cust2, orderLineList2);
+            Order f = new Order(6, "Cancelled", new DateTime(2019, 5, 24, 12, 12, 3), "Cash", cust2, orderLineList2);
 
             Globals.MenuList.Add(m1);
             Globals.MenuList.Add(m2);
@@ -97,7 +92,6 @@ namespace SE_assignment
                 else
                 {
                     Console.WriteLine("Option does not exist! Try again!");
-                    Main(args);
                 }
             }
         }
@@ -246,7 +240,7 @@ namespace SE_assignment
                 {
                     if (o.status == "New")
                     {
-                        Options += o.orderNo + "\n";
+                        Options += "Order No." + o.orderNo + "\n";
                     }
                 }
                 Options += "Input order you wish to prepare: ";
