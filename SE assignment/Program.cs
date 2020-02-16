@@ -25,7 +25,7 @@ namespace SE_assignment
             orderLineList1.Add(ol1);
             orderLineList1.Add(ol2);
 
-            Order a = new Order(1, "New", DateTime.Now, "Cash", cust1, orderLineList1);
+            Order a = new Order(1, "New", new DateTime(2020, 2, 14, 12, 45, 3), "Cash", cust1, orderLineList1);
 
             //Test Data 2
             Customer cust2 = new Customer(2, "Diego", "Ngee Ann Poly", "avin@np.com", 91234567);
