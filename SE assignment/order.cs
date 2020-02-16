@@ -30,7 +30,8 @@ namespace SE_assignment
         {
             get { return orderlineList[index]; }
         }
-
+        
+        //Functions
         public Order(int OrderNo, string Status, DateTime CreateDateTime, string PaymentMethod, Customer customer, List<OrderLine> OrderLineList) 
         {
             orderNo = OrderNo;

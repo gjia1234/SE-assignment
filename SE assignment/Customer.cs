@@ -100,7 +100,7 @@ namespace SE_assignment
         public void custViewOrder(Customer c)
         {
             Console.WriteLine("YOUR ORDER(S)");
-            Console.WriteLine("_____________");
+            Console.WriteLine("______________________________________________________________\n");
 
             List<Order> filtered = new List<Order>();
             List<Order> history = new List<Order>();
@@ -121,9 +121,26 @@ namespace SE_assignment
                     current.Add(ord);
                 }
             }
-            Console.WriteLine("Past Orders: \n");
             int counthList = history.Count;
             int countpList = current.Count;
+
+            //Current Orders
+            Console.WriteLine("CURRENT ORDERS: \n");
+            if (countpList == 0)
+            {
+                Console.WriteLine("Nothing Here!");
+            }
+            else
+            {
+                foreach (Order p in current)
+                {
+                    
+                    Console.WriteLine("Order No:" + p.orderNo + ", Status:" + p.status + ", Est Time of Arrival:" + p.ETA + ", Payment Method:" + p.paymentMethod + ", Order Created Time:" + p.createDateTime + ", Customer ID:" + p.cust.accountNo + ", Customer Name:" + p.cust.name);
+                }
+            }
+
+            //Past Orders
+            Console.WriteLine("\n\nPAST ORDERS: \n");
             if (counthList == 0) {
                 Console.WriteLine("Nothing Here!");
             }
@@ -134,18 +151,7 @@ namespace SE_assignment
                     Console.WriteLine("Order No:" + h.orderNo + ", Status:" + h.status + ", Payment Method:" + h.paymentMethod + ", Order Created Time:" + h.createDateTime + ", Customer ID:" + h.cust.accountNo + ", Customer Name:" + h.cust.name);
                 }
             }
-            Console.WriteLine("Current Orders: \n");
-            if (countpList == 0)
-            {
-                Console.WriteLine("Nothing Here!");
-            }
-            else
-            {
-                foreach (Order p in current)
-                {
-                    Console.WriteLine("Order No:" + p.orderNo + ", Status:" + p.status + ", Payment Method:" + p.paymentMethod + ", Order Created Time:" + p.createDateTime + ", Customer ID:" + p.cust.accountNo + ", Customer Name:" + p.cust.name);
-                }
-            }
+            Console.WriteLine("______________________________________________________________\n");
         }
     }
 
