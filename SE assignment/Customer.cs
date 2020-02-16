@@ -128,7 +128,7 @@ namespace SE_assignment
             Console.WriteLine("CURRENT ORDERS: \n");
             if (countpList == 0)
             {
-                Console.WriteLine("Nothing Here!");
+                Console.WriteLine("No current orders!");
             }
             else
             {
@@ -142,7 +142,7 @@ namespace SE_assignment
             //Past Orders
             Console.WriteLine("\n\nPAST ORDERS: \n");
             if (counthList == 0) {
-                Console.WriteLine("Nothing Here!");
+                Console.WriteLine("No past orders!");
             }
             else
             {
