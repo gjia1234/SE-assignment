@@ -12,6 +12,7 @@ namespace SE_assignment
         public string description { get; set; }
         public float price { get; set; }
         public int unit  { get; set; }
+        
         public bool status {
             get { return unit > 0; }
         }

@@ -92,7 +92,9 @@ namespace SE_assignment
 
         public void custViewOrder(Customer c)
         {
-            Console.WriteLine("All Orders you created:");
+            Console.WriteLine("YOUR ORDER(S)");
+            Console.WriteLine("_____________");
+
             List<Order> filtered = new List<Order>();
             List<Order> history = new List<Order>();
             List<Order> current = new List<Order>();
@@ -112,7 +114,7 @@ namespace SE_assignment
                     current.Add(ord);
                 }
             }
-            Console.WriteLine("Past Orders:");
+            Console.WriteLine("Past Orders: \n");
             int counthList = history.Count;
             int countpList = current.Count;
             if (counthList == 0) {
@@ -125,7 +127,7 @@ namespace SE_assignment
                     Console.WriteLine("Order No:" + h.orderNo + ", Status:" + h.status + ", Payment Method:" + h.paymentMethod + ", Order Created Time:" + h.createDateTime + ", Customer ID:" + h.cust.accountNo + ", Customer Name:" + h.cust.name);
                 }
             }
-            Console.WriteLine("Current Orders:");
+            Console.WriteLine("Current Orders: \n");
             if (countpList == 0)
             {
                 Console.WriteLine("Nothing Here!");
