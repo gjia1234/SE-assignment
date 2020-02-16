@@ -134,9 +134,12 @@ namespace SE_assignment
                         {
                             if (m.name.ToUpper() == item.ToUpper())
                             {
+                               
                                 FoodItem newitem = m as FoodItem;
                                 newItemList.Add(newitem);
+                               
                                 Console.WriteLine("Item added successfully");
+                                Console.WriteLine(newitem);
                                 break;
                             }
                         }
@@ -224,8 +227,71 @@ namespace SE_assignment
                         Console.WriteLine("Current List items: " + m.foodItemList);
                     }
                 }
-                Console.WriteLine("Please input item to remove: ");
-                string item = Console.ReadLine();                
+                Console.WriteLine("Please input item to remove: "); // Suppose to display list of current items
+                string item = Console.ReadLine();
+
+
+                foreach (SetMeal m in Globals.MenuList)
+                {
+                    Console.WriteLine("Name: " + m.name);
+                    Console.WriteLine("Description: " + m.description);
+                    Console.WriteLine("Price: " + m.price);
+                    Console.WriteLine("Quantity: " + m.unit);
+                    Console.WriteLine("Size: " + m.size);
+                    Console.WriteLine("Preparation Time: " + m.prepTime);
+
+                    Console.WriteLine("\nUpdate item Info:");
+                    Console.WriteLine("Input 'Same' if you want to keep the old information");
+                    Console.Write("New Name: ");
+                    string newSetname = Console.ReadLine();
+                    Console.Write("New Description: ");
+                    string newSetdesc = Console.ReadLine();
+                    Console.Write("New Price: ");
+                    string newSetprice = Console.ReadLine();
+                    Console.Write("New Quantity: ");
+                    string newSetQty = Console.ReadLine();
+                    Console.Write("New Size: ");
+                    string newSetSize = Console.ReadLine();
+                    Console.Write("New Prep Time: ");
+                    string newTime = Console.ReadLine();
+
+                    if (newSetname.ToUpper() != "SAME")
+                    {
+                        m.name = newSetname;
+                    }
+
+                    if (newSetdesc.ToUpper() != "SAME")
+                    {
+                        m.description = newSetdesc;
+                    }
+                    if (newSetprice.ToUpper() != "SAME")
+                    {
+                        m.price = float.Parse(newSetprice);
+                    }
+                    if (newSetQty.ToUpper() != "SAME")
+                    {
+                        m.unit = int.Parse(newSetQty);
+                    }
+                    if (newSetSize.ToUpper() != "SAME")
+                    {
+                        m.size = int.Parse(newSetSize);
+                    }
+                    if (newTime.ToUpper() != "SAME")
+                    {
+                        m.prepTime = int.Parse(newTime);
+                    }
+
+                    Console.WriteLine("Update Successful!");
+                    Console.WriteLine("\nUpdated Information");
+                    Console.WriteLine("Name: " + m.name);
+                    Console.WriteLine("Description: " + m.description);
+                    Console.WriteLine("Price: " + m.price);
+                    Console.WriteLine("Quantity: " + m.unit);
+                    Console.WriteLine("Size: " + m.size);
+                    Console.WriteLine("Preparation Time: " + m.prepTime);
+                    break;
+                }
+
             }
 
 
